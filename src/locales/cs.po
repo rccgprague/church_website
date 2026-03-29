@@ -1,0 +1,448 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2023-06-18 12:33+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: cs\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/pages/gallery.tsx:35
+msgid "A Photo Gallery of Our Church Community"
+msgstr "Fotogalerie naší církevní obce"
+
+#: src/components/layout/AppFooter.tsx:113
+#: src/components/layout/AppHeader.tsx:121
+msgid "About"
+msgstr "O nás"
+
+#: src/components/about/AboutHero.tsx:8
+msgid "About Covenant parish prague"
+msgstr "O Covenant farnosti praha"
+
+#: src/components/layout/AppFooter.tsx:126
+msgid "About us"
+msgstr "O nás"
+
+#: src/components/about/AboutHero.tsx:10
+msgid "According to The Lord's promise in Matthew 16:18, the Church is currently under the leadership of the Holy Spirit  with Dr. Augustine Otekhile as the undershepherd."
+msgstr "Podle Pánova zaslíbení v Matoušovi 16:18 je Církev v současné době pod vedením Ducha svatého s Dr. Augustinem Otekhilem jako podpastýřem."
+
+#: src/components/layout/AppFooter.tsx:164
+msgid "Account Number"
+msgstr "Číslo účtu"
+
+#: src/components/contact/ContactInfo.tsx:166
+msgid "and"
+msgstr "a"
+
+#: src/components/layout/AppFooter.tsx:154
+msgid "Bank details"
+msgstr "Detaily bankovního účtu"
+
+#: src/components/layout/AppFooter.tsx:161
+msgid "Banker"
+msgstr "Banker"
+
+#: src/components/layout/AppFooter.tsx:135
+msgid "Bible Study"
+msgstr "Studium Bible"
+
+#: src/components/layout/AppFooter.tsx:270
+msgid "Built by"
+msgstr "Postaven"
+
+#: src/components/events/EventsHero.tsx:8
+msgid "Celebrate with Us: Upcoming Events at Covenant parish prague."
+msgstr "Oslavte s námi: Nadcházející akce ve farnosti Covenant v Praze."
+
+#: src/components/layout/AppFooter.tsx:136
+msgid "Celebration Service"
+msgstr "Hlavní slavnostní shromáždění"
+
+#: src/components/Countdown.tsx:118
+msgid "Click on the button below to join our live event"
+msgstr "Kliknutím na tlačítko níže se připojíte k naší živé události"
+
+#: src/components/events/EventsHero.tsx:10
+msgid "Community Gatherings: Meet new friends and connect with old ones at our community gatherings."
+msgstr "Komunitní setkání: Seznamte se s novými přáteli a spojte se s těmi starými na našich komunitních setkáních."
+
+#: src/components/contact/ContactInfo.tsx:132
+msgid "Contact section"
+msgstr "Kontaktní sekce"
+
+#: src/components/layout/AppFooter.tsx:117
+#: src/components/layout/AppHeader.tsx:133
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: src/components/blog/BlogDetailContent.tsx:50
+msgid "Covenant parish digital library content"
+msgstr "Obsah digitální knihovny farnosti Covenant"
+
+#: src/components/events/EventDetailContent.tsx:50
+msgid "Covenant parish Event Details"
+msgstr "Podrobnosti o události farní smlouvy"
+
+#: src/components/events/EventsHero.tsx:7
+msgid "Covenant parish prague Events"
+msgstr "Covenant farnosti Praha Události"
+
+#: src/components/about/AboutStory.tsx:36
+msgid "Covenant parish prague Story"
+msgstr "Smlouva farnost pražský příběh"
+
+#: src/components/blog/BlogDetail.tsx:32
+#: src/components/hero/HomeHero.tsx:108
+#: src/components/layout/AppFooter.tsx:116
+#: src/components/layout/AppHeader.tsx:130
+msgid "Digital Library"
+msgstr "Digitální knihovna"
+
+#: src/components/PostList.tsx:173
+msgid "DIGITAL LIBRARY"
+msgstr "Digitální knihovna"
+
+#: src/constants/dummyData.tsx:158
+msgid "Email"
+msgstr "E-mailem"
+
+#: src/components/contact/ContactInfo.tsx:144
+msgid "Email address"
+msgstr "Emailová adresa"
+
+#: src/components/layout/AppFooter.tsx:115
+#: src/components/layout/AppHeader.tsx:127
+msgid "Events"
+msgstr "Akce"
+
+#: src/components/events/EventsInfo.tsx:48
+#: src/components/UpcomingEvents.tsx:113
+msgid "Every"
+msgstr "Každý"
+
+#: src/components/contact/ContactInfo.tsx:133
+msgid "Fill the form"
+msgstr "Vyplnit formulář"
+
+#: src/components/layout/AppFooter.tsx:147
+msgid "Fridays"
+msgstr "pátky"
+
+#: src/components/layout/AppFooter.tsx:114
+#: src/components/layout/AppHeader.tsx:124
+msgid "Gallery"
+msgstr "Galerie"
+
+#: src/pages/contact.tsx:39
+msgid "Get in Touch: Connect with Our Church Community"
+msgstr "Kontaktujte nás: Spojte se s naší církevní komunitou"
+
+#: src/pages/blog/index.tsx:39
+msgid "Here at our church, we understand that you may have questions about who we are, what we believe, and how we operate."
+msgstr "Zde v našem sboru chápeme, že můžete mít otázky o tom, kdo jsme, čemu věříme a jak fungujeme"
+
+#: src/components/layout/AppFooter.tsx:112
+#: src/components/layout/AppHeader.tsx:118
+msgid "Home"
+msgstr "Úvod"
+
+#: src/components/contact/ContactInfo.tsx:166
+msgid "I agree with"
+msgstr "souhlasím s"
+
+#: src/components/layout/AppFooter.tsx:165
+msgid "IBAN"
+msgstr "IBAN"
+
+#: src/pages/blog/index.tsx:38
+msgid "Inspiring Thoughts: A Collection of Our Church's Blog Posts"
+msgstr "Inspirující myšlenky: Sbírka blogových příspěvků naší církve"
+
+#: src/components/events/EventsHero.tsx:9
+msgid "Introduction: Welcome to our event page! We are excited to share with you the upcoming events that we have planned for you and your family."
+msgstr "Úvod: Vítejte na stránce naší akce! Jsme rádi, že se s vámi můžeme podělit o nadcházející akce, které jsme pro vás a vaši rodinu naplánovali."
+
+#: src/components/about/AboutHero.tsx:11
+msgid "It is my sincere desire to have you engage with us on this platform to experience the love of God in Christ Jesus and true fellowship. God bless you richly."
+msgstr "Mým upřímným přáním je, abyste se s námi zapojili na této platformě, abyste zažili lásku Boží v Kristu Ježíši a pravé společenství. Bůh vám bohatě žehnej."
+
+#: src/components/cards/EventCard.tsx:86
+msgid "Join Event"
+msgstr "Připojte se k události"
+
+#: src/components/Countdown.tsx:156
+msgid "Join live event"
+msgstr "Připojte se k živé události"
+
+#: src/pages/gallery.tsx:37
+msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
+msgstr "Připojte se k nám na této cestě, kdy oslavujeme požehnání naší společné víry a znovu prožíváme vzácné vzpomínky. Kéž vás tyto fotografie inspirují a prohloubí váš vztah k naší církevní komunitě."
+
+#: src/components/contact/ContactInfo.tsx:149
+msgid "Message"
+msgstr "Zpráva"
+
+#: src/components/HomeIntro.tsx:112
+msgid "More About Us"
+msgstr "Více o nás"
+
+#: src/components/events/MoreEventsHeader.tsx:43
+msgid "More Events"
+msgstr "Další události"
+
+#: src/constants/dummyData.tsx:168
+msgid "Office"
+msgstr "Kancelář"
+
+#: src/components/layout/AppFooter.tsx:142
+msgid "Online Bible"
+msgstr "Online Bible"
+
+#: src/pages/contact.tsx:40
+msgid "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
+msgstr "Náš sbor je zasvěcen službě naší komunitě a šíření Boží lásky a věříme, že otevřená komunikace je klíčem k podpoře pevných vztahů."
+
+#: src/components/hero/HomeHero.tsx:104
+msgid "our events"
+msgstr "naše akce"
+
+#: src/pages/blog/index.tsx:40
+msgid "Our FAQ page is designed to provide you with comprehensive answers to the most commonly asked questions about our church. Whether you're a first-time visitor or a long-time member, we hope this resource will give you a better"
+msgstr "Naše stránka FAQ je navržena tak, aby vám poskytla vyčerpávající odpovědi na nejčastěji kladené otázky o našem kostele. Ať už jste prvním návštěvníkem nebo dlouholetým členem, doufáme, že vám tento zdroj poskytne lepší"
+
+#: src/components/layout/AppFooter.tsx:171
+msgid "Our location"
+msgstr "Naše sídlo"
+
+#: src/components/layout/AppFooter.tsx:131
+msgid "Our regular services"
+msgstr "Naše pravidelná shromáždění"
+
+#: src/components/layout/AppFooter.tsx:232
+msgid "Our Social Networks"
+msgstr "Naše sociální sítě"
+
+#: src/components/HomeTeam.tsx:174
+msgid "Our Team"
+msgstr "Náš tým"
+
+#: src/constants/dummyData.tsx:163
+msgid "Phone"
+msgstr "Telefon"
+
+#: src/components/layout/AppFooter.tsx:267
+msgid "Prague Czech Republic | All Rights Reserved | Data Privacy"
+msgstr "PRAHA ČESKÁ REPUBLIKA | Všechna práva vyhrazena | Ochrana osobních údajů"
+
+#: src/components/layout/AppFooter.tsx:185
+msgid "Prague, Czech Republic"
+msgstr "PRAHA, ČESKÁ REPUBLIKA"
+
+#: src/components/layout/AppFooter.tsx:149
+msgid "Prayer Meeting"
+msgstr "Modlitební setkání"
+
+#: src/components/contact/ContactInfo.tsx:167
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+#: src/components/layout/AppFooter.tsx:214
+msgid "Quick Links"
+msgstr "Rychlé odkazy"
+
+#: src/pages/about.tsx:27
+msgid "RCCG Prague - About us"
+msgstr "RCCG Praha - O nás"
+
+#: src/pages/contact.tsx:27
+msgid "RCCG Prague - Contact us"
+msgstr "RCCG Praha - Kontaktujte nás"
+
+#: src/pages/index.tsx:87
+msgid "RCCG Prague - Covenant Parish"
+msgstr "RCCG Prague - Covenant Parish"
+
+#: src/pages/blog/[slug].tsx:26
+#: src/pages/blog/index.tsx:27
+msgid "RCCG Prague - Digital Library"
+msgstr "RCCG Praha - Digitální knihovna"
+
+#: src/pages/events/[slug].tsx:26
+msgid "RCCG Prague - Event"
+msgstr "RCCG Praha - Akce"
+
+#: src/pages/gallery.tsx:27
+msgid "RCCG Prague - Gallery"
+msgstr "RCCG Praha - Galerie"
+
+#: src/pages/events/index.tsx:27
+msgid "RCCG Prague - Our Events"
+msgstr "RCCG Praha - Naše akce"
+
+#: src/pages/contact.tsx:30
+msgid "RCCG Prague, get in touch with us"
+msgstr "RCCG Praha, kontaktujte nás"
+
+#: src/pages/events/[slug].tsx:27
+msgid "RCCG Prague, our church event"
+msgstr "RCCG Praha, naše církevní akce"
+
+#: src/pages/events/index.tsx:28
+msgid "RCCG Prague, our church events"
+msgstr "RCCG Praha, naše církevní akce"
+
+#: src/pages/blog/[slug].tsx:29
+#: src/pages/blog/index.tsx:30
+msgid "RCCG Prague, our digital library"
+msgstr "RCCG Praha, naše digitální knihovna"
+
+#: src/pages/gallery.tsx:28
+msgid "RCCG Prague, the church gallery"
+msgstr "RCCG Praha, církevní galerie"
+
+#: src/pages/contact.tsx:34
+msgid "RCCG, Prague, Covenant, Church, contact"
+msgstr "RCCG, Praha, Covenant, Church, kontakt"
+
+#: src/pages/gallery.tsx:31
+msgid "RCCG, Prague, Covenant, Parish, Church, Gallery"
+msgstr "RCCG, Praha, Covenant, Farnost, Kostel, Galerie"
+
+#: src/pages/blog/[slug].tsx:33
+#: src/pages/blog/index.tsx:34
+msgid "RCCG, Prague, Digital, Library, Church, blog, news"
+msgstr "RCCG, Praha, Digital, Knihovna, Kostel, blog, novinky"
+
+#: src/pages/events/[slug].tsx:28
+msgid "RCCG, Prague, Event, Church"
+msgstr "RCCG, Praha, Akce, Kostel"
+
+#: src/pages/events/index.tsx:29
+msgid "RCCG, Prague, Events, Church"
+msgstr "RCCG, Praha, Akce, Kostel"
+
+#: src/components/PostList.tsx:210
+msgid "Read More"
+msgstr "Více"
+
+#: src/components/UpcomingEvents.tsx:90
+msgid "See All Events"
+msgstr "zobrazit všechny události"
+
+#: src/components/PostList.tsx:176
+msgid "SEE ALL POSTS"
+msgstr "VIZ VŠECHNY PŘÍSPĚVKY"
+
+#: src/components/contact/ContactInfo.tsx:171
+msgid "Send Message"
+msgstr "Poslat zprávu"
+
+#: src/components/layout/AppFooter.tsx:143
+msgid "Study"
+msgstr "Studie"
+
+#: src/components/layout/AppFooter.tsx:132
+msgid "Sundays"
+msgstr "neděle"
+
+#: src/components/contact/ContactInfo.tsx:166
+msgid "Terms of Use"
+msgstr "Podmínky použití"
+
+#: src/components/HomeSlider.tsx:113
+msgid "Testimonials"
+msgstr "Posudky"
+
+#: src/pages/contact.tsx:41
+msgid "That's why we've created this contact page to make it easy for you to connect with us. Whether you have a question, a suggestion, or just want to say hello, we're here to listen."
+msgstr "Proto jsme vytvořili tuto kontaktní stránku, abychom vám usnadnili spojení s námi. Ať už máte dotaz, návrh nebo jen chcete pozdravit, jsme tu, abychom vám naslouchali."
+
+#: src/components/about/AboutStory.tsx:40
+msgid "The Covenant Parish is a part of the Redeemed Christian Church of God (RCCG) Worldwide with Headquarters in Lagos, Nigeria. The Redeemed Christian Church of God (RCCG) was founded in 1952 by late Rev. Josiah Akindayomi, its first General Overseer."
+msgstr "Covenant Parish je součástí Redeemed Christian Church of God (RCCG) Worldwide s ústředím v Lagosu v Nigérii. Vykoupená křesťanská církev Boží (RCCG) byla založena v roce 1952 zesnulým reverendem Josiahem Akindayomim, jejím prvním generálním dozorcem."
+
+#: src/components/about/AboutHero.tsx:9
+msgid "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
+msgstr "Covenant Parish je ústředím církve The Redeemed Christian Church of God (RCCG) v Praze, Česká republika."
+
+#: src/pages/index.tsx:100
+msgid "The Covenant Place"
+msgstr "Místo úmluvy"
+
+#: src/components/about/AboutStory.tsx:43
+msgid "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.O) has been used mightily by God, to bring phenomenal growth, innovation and expansion to the church, in fulfillment of the covenant the founder had with the Almighty God."
+msgstr "Současného generálního dozorce, pastora E. Adeboye (s oblibou nazývaného Tatínek G.O.) Bůh mocně použil, aby přinesl církvi fenomenální růst, inovaci a expanzi, aby naplnil smlouvu, kterou zakladatel uzavřel s Všemohoucím Bohem."
+
+#: src/pages/index.tsx:90
+msgid "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
+msgstr "RCCG Prague Covenant Parish je hlavním sídlem Církve vykoupené křesťanské církve Boží Praha, Česká republika."
+
+#: src/components/contact/ContactInfo.tsx:153
+msgid "Type your message here"
+msgstr "zde Napište svou zprávu"
+
+#: src/pages/blog/index.tsx:41
+msgid "understanding of what makes our church unique and why we're passionate about spreading God's love. Browse through the FAQs to discover more about our church and how you can get involved."
+msgstr "pochopení toho, čím je náš sbor jedinečný a proč jsme nadšení pro šíření Boží lásky. Projděte si často kladené otázky a zjistěte více o našem sboru a o tom, jak se můžete zapojit."
+
+#: src/components/UpcomingEvents.tsx:88
+msgid "Upcoming Events"
+msgstr "Připravované akce"
+
+#: src/components/Countdown.tsx:156
+msgid "Watch Rebroadcast"
+msgstr "Sledujte Rebroadcast"
+
+#: src/components/Countdown.tsx:117
+msgid "We are live!"
+msgstr "Jsme živí!"
+
+#: src/components/events/MoreEventsHeader.tsx:47
+msgid ""
+"We invite you to join us for a special celebration of the\n"
+"resurrection of Jesus Christ, and to discover the hope that"
+msgstr "Zveme vás, abyste se k nám připojili na zvláštní oslavu vzkříšení Ježíše Krista a objevili naději, že se to stane"
+
+#: src/components/Countdown.tsx:122
+msgid "We will be live in:"
+msgstr "Budeme bydlet v:"
+
+#: src/components/layout/AppFooter.tsx:140
+msgid "Wednesdays"
+msgstr "středy"
+
+#: src/pages/gallery.tsx:36
+msgid "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
+msgstr "Vítejte ve fotogalerii našeho sboru, kde předvádíme krásu a radost našeho společenství víry v akci. Tato galerie slouží jako vizuální svědectví o lásce, naději a jednotě, kterou zažíváme jako součást naší církevní rodiny, od živých bohoslužeb až po potěšující společenské akce."
+
+#: src/pages/index.tsx:101
+msgid "Welcome to RCCG Prague"
+msgstr "Vítejte v RCCG Praha"
+
+#: src/components/HomeIntro.tsx:108
+msgid "Who we are"
+msgstr "Kdo jsme"
+
+#: src/pages/contact.tsx:42
+msgid "You can reach us through our contact form, email, or phone, and one of our team members will get back to you as soon as possible. We can't wait to hear from you!"
+msgstr "Můžete nás kontaktovat prostřednictvím našeho kontaktního formuláře, e-mailu nebo telefonu a jeden z členů našeho týmu se vám co nejdříve ozve. Nemůžeme se dočkat, až se ozvete!"
+
+#: src/components/contact/ContactInfo.tsx:145
+msgid "Your email"
+msgstr "Tvůj e-mail"
+
+#: src/components/contact/ContactInfo.tsx:140
+msgid "Your name"
+msgstr "Tvé jméno"
+
+#: src/components/contact/ContactInfo.tsx:139
+msgid "Your Name"
+msgstr "Tvé jméno"
