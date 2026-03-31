@@ -69,6 +69,7 @@ export default function Home({
     bannerTitle,
     bannerSubTitle,
     bannerImageUrl,
+    bannerHotspot,
     bannerSlides,
     liveStartDateTime,
     liveYoutubeUrl,
@@ -86,13 +87,7 @@ export default function Home({
   const heroSlides =
     bannerSlides && bannerSlides.length > 0
       ? bannerSlides
-      : [
-          {
-            title: bannerTitle ?? t`The Covenant Place`,
-            subTitle: bannerSubTitle ?? t`Welcome to RCCG Prague`,
-            imageUrl: bannerImageUrl ?? "/images/hero-bg.jpeg",
-          },
-        ];
+      : [{ imageUrl: bannerImageUrl ?? "/images/hero-bg.jpeg", hotspot: bannerHotspot }];
 
   return (
     <>
@@ -109,7 +104,11 @@ export default function Home({
       </Head>
       <Loader isLoading={isLoading}>
         <Container fluid className="px-0">
-          <HomeHero slides={heroSlides} />
+          <HomeHero
+            title={bannerTitle ?? t`The Covenant Place`}
+            subTitle={bannerSubTitle ?? t`Welcome to RCCG Prague`}
+            slides={heroSlides}
+          />
           <Countdown
             theme={{
               imageUrl: themeImageUrl ?? "",

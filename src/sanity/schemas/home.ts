@@ -32,7 +32,7 @@ export default defineType({
       name: "bannerSlides",
       title: "Banner Slides",
       description:
-        "Add multiple slides for a slideshow banner. If provided, these override the single Banner Title/Sub-Title/Image above.",
+        "Add multiple images for a slideshow banner. The Banner Title and Sub-Title above apply to all slides. Set the hotspot on each image so it stays in frame on mobile.",
       type: "array",
       of: [
         {
@@ -41,16 +41,6 @@ export default defineType({
           title: "Slide",
           fields: [
             {
-              name: "title",
-              title: "Slide Title",
-              type: "string",
-            },
-            {
-              name: "subTitle",
-              title: "Slide Sub-Title",
-              type: "string",
-            },
-            {
               name: "image",
               title: "Slide Image",
               type: "image",
@@ -58,7 +48,7 @@ export default defineType({
             },
           ],
           preview: {
-            select: { title: "title", media: "image" },
+            select: { media: "image" },
           },
         },
       ],

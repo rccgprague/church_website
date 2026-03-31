@@ -11,8 +11,41 @@ import { PUBLIC_ROUTES } from "@/src/constants/routes";
 import { BannerSlide } from "@/src/types/home";
 
 interface HomeHeroProps {
+  title: string;
+  subTitle: string;
   slides: BannerSlide[];
 }
+
+/**
+ * Build a Sanity image URL with focal-point cropping for a given aspect ratio.
+ * Falls back to the original URL for non-Sanity assets (e.g. local /images/*).
+ */
+function buildBannerUrl(
+  url: string,
+  hotspot: { x: number; y: number } | undefined,
+  format: "landscape" | "portrait"
+): string {
+  if (!url || !url.includes("cdn.sanity.io")) return url;
+
+  const base = url.split("?")[0];
+  const params: Record<string, string> = {
+    w: format === "landscape" ? "1920" : "600",
+    h: format === "landscape" ? "900" : "900",
+    fit: "crop",
+    crop: "focalpoint",
+    auto: "format",
+  };
+
+  if (hotspot) {
+    params["fp-x"] = hotspot.x.toFixed(4);
+    params["fp-y"] = hotspot.y.toFixed(4);
+  }
+
+  return `${base}?${new URLSearchParams(params)}`;
+}
+
+const GRADIENT =
+  "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.75) 100%)";
 
 const StyledCarousel = styled(Carousel)`
   .carousel-indicators {
@@ -86,14 +119,8 @@ const StyledCarousel = styled(Carousel)`
   )}
 `;
 
-const SlideBackground = styled.div<{ bg: string }>`
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.05) 0%,
-      rgba(0, 0, 0, 0.55) 75%,
-      rgba(0, 0, 0, 0.75) 100%
-    ),
-    url(${({ bg }) => bg ?? "/images/hero-bg.jpeg"});
+const SlideBackground = styled.div<{ desktopBg: string; mobileBg: string }>`
+  background-image: ${GRADIENT}, url(${(p) => p.desktopBg});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -144,7 +171,9 @@ const SlideBackground = styled.div<{ bg: string }>`
   ${mediaBreakpointDown(
     BREAKPOINTS.md,
     css`
-      min-height: 55vh;
+      /* Switch to portrait crop on tablet/mobile */
+      background-image: ${GRADIENT}, url(${(p: any) => p.mobileBg});
+      min-height: 60vh;
       padding: 0 24px 60px;
 
       h1 {
@@ -160,7 +189,7 @@ const SlideBackground = styled.div<{ bg: string }>`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      min-height: 50vh;
+      min-height: 55vh;
       padding: 0 16px 70px;
 
       h1 {
@@ -221,7 +250,7 @@ const StyledTransparentButton = styled(Button)`
   )}
 `;
 
-const HomeHero: React.FC<HomeHeroProps> = ({ slides }) => {
+const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
   const router = useRouter();
 
   const handleRoutePush = (path: keyof typeof PUBLIC_ROUTES) => {
@@ -237,12 +266,15 @@ const HomeHero: React.FC<HomeHeroProps> = ({ slides }) => {
     >
       {slides.map((slide, index) => (
         <Carousel.Item key={index}>
-          <SlideBackground bg={slide.imageUrl}>
+          <SlideBackground
+            desktopBg={buildBannerUrl(slide.imageUrl, slide.hotspot, "landscape")}
+            mobileBg={buildBannerUrl(slide.imageUrl, slide.hotspot, "portrait")}
+          >
             <Row className="w-100">
               <Col xs={12} md={9} lg={7}>
                 <Stack gap={4}>
-                  <h1>{slide.title}</h1>
-                  <p className="text-start">{slide.subTitle}</p>
+                  <h1>{title}</h1>
+                  <p className="text-start">{subTitle}</p>
                   <Stack direction="horizontal" gap={3} className="flex-wrap">
                     <StyledOrangeButton
                       onClick={() => handleRoutePush("events")}
