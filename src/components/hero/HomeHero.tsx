@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Col, Container, Row, Stack } from "react-bootstrap";
+import { Button, Carousel, Col, Row, Stack } from "react-bootstrap";
 import { BREAKPOINTS, mediaBreakpointDown } from "@/src/theme/breakpoints";
 import Fonts from "@/src/theme/fonts";
 import Theme from "@/src/theme";
@@ -8,47 +8,169 @@ import { css } from "styled-components";
 import { useRouter } from "next/router";
 import { t } from "@lingui/macro";
 import { PUBLIC_ROUTES } from "@/src/constants/routes";
+import { BannerSlide } from "@/src/types/home";
 
 interface HomeHeroProps {
-  heroTitle: string;
-  heroText: string;
-  bgImageUrl: string;
+  slides: BannerSlide[];
 }
 
-export const StyledHomeHero = styled.section<{ bg: string }>`
-  /* background-image: linear-gradient(
-      90deg,
-      rgba(13, 14, 15, 0.7) 10%,
-      rgba(13, 14, 15, 0) 80%
+const StyledCarousel = styled(Carousel)`
+  .carousel-indicators {
+    margin-bottom: 1.5rem;
+    gap: 6px;
+
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid ${Theme.colors.orange};
+      background-color: transparent;
+      opacity: 0.7;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+
+      &.active {
+        background-color: ${Theme.colors.orange};
+        opacity: 1;
+      }
+    }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    opacity: 0.8;
+
+    &:hover {
+      background-color: ${Theme.colors.orange};
+      opacity: 1;
+    }
+  }
+
+  .carousel-control-prev {
+    left: 24px;
+  }
+
+  .carousel-control-next {
+    right: 24px;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 36px;
+        height: 36px;
+      }
+
+      .carousel-control-prev {
+        left: 12px;
+      }
+
+      .carousel-control-next {
+        right: 12px;
+      }
+    `
+  )}
+`;
+
+const SlideBackground = styled.div<{ bg: string }>`
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.55) 75%,
+      rgba(0, 0, 0, 0.75) 100%
     ),
-    url(${({ bg }) => bg ?? "/images/hero-bg.jpeg"}); */
-  background-image: url(${({ bg }) => bg ?? "/images/hero-bg.jpeg"});
-  background-position: center;
+    url(${({ bg }) => bg ?? "/images/hero-bg.jpeg"});
   background-size: cover;
-  background-position: top;
-  padding: 350px 24px 80px 80px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 85vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 100px;
+
   h1 {
     ${Fonts.headingOne};
     color: ${Theme.colors.white};
     width: 100%;
-    max-width: 300px;
+    max-width: 560px;
   }
+
   p {
     ${Fonts.paragraphHero};
     color: ${Theme.colors.light};
     width: 100%;
     max-width: 500px;
   }
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.xl,
+    css`
+      min-height: 75vh;
+      padding: 0 60px 80px;
+    `
+  )}
+
   ${mediaBreakpointDown(
     BREAKPOINTS.lg,
     css`
-      padding: 100px 40px;
+      min-height: 65vh;
+      padding: 0 40px 70px;
+
       h1 {
         font-size: 36px;
         line-height: 120%;
       }
+
       p {
         font-size: 18px;
+      }
+    `
+  )}
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.md,
+    css`
+      min-height: 55vh;
+      padding: 0 24px 60px;
+
+      h1 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    `
+  )}
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      min-height: 50vh;
+      padding: 0 16px 70px;
+
+      h1 {
+        font-size: 24px;
+        max-width: 100%;
+      }
+
+      p {
+        font-size: 15px;
+        max-width: 100%;
       }
     `
   )}
@@ -66,6 +188,15 @@ export const StyledOrangeButton = styled(Button)`
     background-color: transparent;
     border: 1px solid ${Theme.colors.orange};
   }
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      width: 160px;
+      height: 52px;
+      font-size: 14px;
+    `
+  )}
 `;
 
 const StyledTransparentButton = styled(Button)`
@@ -79,39 +210,56 @@ const StyledTransparentButton = styled(Button)`
   :hover {
     border: 1px solid ${Theme.colors.orange} !important;
   }
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      width: 150px;
+      height: 52px;
+      font-size: 14px;
+    `
+  )}
 `;
 
-const HomeHero: React.FC<HomeHeroProps> = ({
-  heroTitle,
-  heroText,
-  bgImageUrl,
-}) => {
+const HomeHero: React.FC<HomeHeroProps> = ({ slides }) => {
   const router = useRouter();
 
   const handleRoutePush = (path: keyof typeof PUBLIC_ROUTES) => {
     router.push(PUBLIC_ROUTES[path]);
   };
+
   return (
-    <StyledHomeHero bg={bgImageUrl}>
-      <Row>
-        <Col xs={12} md={8}>
-          <Stack gap={4}>
-            <h1>{heroTitle}</h1>
-            <p className="text-start">{heroText}</p>
-            <Stack direction="horizontal" gap={4} className="flex-wrap">
-              <StyledOrangeButton
-                onClick={() => handleRoutePush("events")}
-              >{t`our events`}</StyledOrangeButton>
-              <StyledTransparentButton
-                onClick={() => handleRoutePush("digitalLibrary")}
-              >
-                {t`Digital Library`}
-              </StyledTransparentButton>
-            </Stack>
-          </Stack>
-        </Col>
-      </Row>
-    </StyledHomeHero>
+    <StyledCarousel
+      interval={6000}
+      fade
+      indicators={slides.length > 1}
+      controls={slides.length > 1}
+    >
+      {slides.map((slide, index) => (
+        <Carousel.Item key={index}>
+          <SlideBackground bg={slide.imageUrl}>
+            <Row className="w-100">
+              <Col xs={12} md={9} lg={7}>
+                <Stack gap={4}>
+                  <h1>{slide.title}</h1>
+                  <p className="text-start">{slide.subTitle}</p>
+                  <Stack direction="horizontal" gap={3} className="flex-wrap">
+                    <StyledOrangeButton
+                      onClick={() => handleRoutePush("events")}
+                    >{t`our events`}</StyledOrangeButton>
+                    <StyledTransparentButton
+                      onClick={() => handleRoutePush("digitalLibrary")}
+                    >
+                      {t`Digital Library`}
+                    </StyledTransparentButton>
+                  </Stack>
+                </Stack>
+              </Col>
+            </Row>
+          </SlideBackground>
+        </Carousel.Item>
+      ))}
+    </StyledCarousel>
   );
 };
 

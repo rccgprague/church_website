@@ -29,6 +29,41 @@ export default defineType({
       },
     }),
     defineField({
+      name: "bannerSlides",
+      title: "Banner Slides",
+      description:
+        "Add multiple slides for a slideshow banner. If provided, these override the single Banner Title/Sub-Title/Image above.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "slide",
+          title: "Slide",
+          fields: [
+            {
+              name: "title",
+              title: "Slide Title",
+              type: "string",
+            },
+            {
+              name: "subTitle",
+              title: "Slide Sub-Title",
+              type: "string",
+            },
+            {
+              name: "image",
+              title: "Slide Image",
+              type: "image",
+              options: { hotspot: true },
+            },
+          ],
+          preview: {
+            select: { title: "title", media: "image" },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "themeTitle",
       title: "Theme Title",
       type: "string",
