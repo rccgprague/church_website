@@ -219,7 +219,7 @@ export const StyledOrangeButton = styled(Button)`
   )}
 `;
 
-/** Title + subtitle inside the banner — hidden on mobile/tablet (≤lg) */
+/** Title, subtitle and buttons inside the banner — hidden on mobile/tablet (≤lg) */
 const BannerTextDesktop = styled.div`
   ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: none;`)}
 `;
@@ -307,22 +307,22 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
             >
               <Row className="w-100">
                 <Col xs={12} md={9} lg={7}>
-                  <Stack gap={4}>
-                    <BannerTextDesktop>
+                  <BannerTextDesktop>
+                    <Stack gap={4}>
                       <h1>{title}</h1>
                       <p className="text-start">{subTitle}</p>
-                    </BannerTextDesktop>
-                    <Stack direction="horizontal" gap={3} className="flex-wrap">
-                      <StyledOrangeButton
-                        onClick={() => handleRoutePush("events")}
-                      >{t`our events`}</StyledOrangeButton>
-                      <StyledTransparentButton
-                        onClick={() => handleRoutePush("digitalLibrary")}
-                      >
-                        {t`Digital Library`}
-                      </StyledTransparentButton>
+                      <Stack direction="horizontal" gap={3} className="flex-wrap">
+                        <StyledOrangeButton
+                          onClick={() => handleRoutePush("events")}
+                        >{t`our events`}</StyledOrangeButton>
+                        <StyledTransparentButton
+                          onClick={() => handleRoutePush("digitalLibrary")}
+                        >
+                          {t`Digital Library`}
+                        </StyledTransparentButton>
+                      </Stack>
                     </Stack>
-                  </Stack>
+                  </BannerTextDesktop>
                 </Col>
               </Row>
             </SlideBackground>
@@ -332,6 +332,16 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
       <BannerCaptionMobile>
         <h2>{title}</h2>
         <p>{subTitle}</p>
+        <Stack direction="horizontal" gap={3} className="flex-wrap mt-3">
+          <StyledOrangeButton
+            onClick={() => handleRoutePush("events")}
+          >{t`our events`}</StyledOrangeButton>
+          <StyledTransparentButton
+            onClick={() => handleRoutePush("digitalLibrary")}
+          >
+            {t`Digital Library`}
+          </StyledTransparentButton>
+        </Stack>
       </BannerCaptionMobile>
     </>
   );
