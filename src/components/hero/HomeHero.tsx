@@ -218,6 +218,45 @@ export const StyledOrangeButton = styled(Button)`
   )}
 `;
 
+/** Title + subtitle inside the banner — hidden on mobile/tablet (≤lg) */
+const BannerTextDesktop = styled.div`
+  ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: none;`)}
+`;
+
+/** Title + subtitle below the banner — only visible on mobile/tablet (≤lg) */
+const BannerCaptionMobile = styled.div`
+  display: none;
+  padding: 28px 20px 4px;
+
+  h2 {
+    ${Fonts.headingOne};
+    color: ${Theme.colors.dark};
+    font-size: 26px;
+    line-height: 1.25;
+    max-width: 520px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    ${Fonts.paragraphHero};
+    color: ${Theme.colors.grey};
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0;
+  }
+
+  ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: block;`)}
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      padding: 20px 16px 4px;
+      h2 { font-size: 22px; }
+      p { font-size: 14px; }
+    `
+  )}
+`;
+
 const StyledTransparentButton = styled(Button)`
   background-color: transparent !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -248,42 +287,50 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
   };
 
   return (
-    <StyledCarousel
-      interval={6000}
-      fade
-      indicators={slides.length > 1}
-      controls={slides.length > 1}
-    >
-      {slides.map((slide, index) => (
-        <Carousel.Item key={index}>
-          <SlideBackground
-            bg={slide.imageUrl}
-            bgPosition={hotspotPosition(slide.hotspot)}
-            mobileBg={slide.mobileImageUrl ?? slide.imageUrl}
-            mobileBgPos={hotspotPosition(slide.mobileHotspot ?? slide.hotspot)}
-          >
-            <Row className="w-100">
-              <Col xs={12} md={9} lg={7}>
-                <Stack gap={4}>
-                  <h1>{title}</h1>
-                  <p className="text-start">{subTitle}</p>
-                  <Stack direction="horizontal" gap={3} className="flex-wrap">
-                    <StyledOrangeButton
-                      onClick={() => handleRoutePush("events")}
-                    >{t`our events`}</StyledOrangeButton>
-                    <StyledTransparentButton
-                      onClick={() => handleRoutePush("digitalLibrary")}
-                    >
-                      {t`Digital Library`}
-                    </StyledTransparentButton>
+    <>
+      <StyledCarousel
+        interval={6000}
+        fade
+        indicators={slides.length > 1}
+        controls={slides.length > 1}
+      >
+        {slides.map((slide, index) => (
+          <Carousel.Item key={index}>
+            <SlideBackground
+              bg={slide.imageUrl}
+              bgPosition={hotspotPosition(slide.hotspot)}
+              mobileBg={slide.mobileImageUrl ?? slide.imageUrl}
+              mobileBgPos={hotspotPosition(slide.mobileHotspot ?? slide.hotspot)}
+            >
+              <Row className="w-100">
+                <Col xs={12} md={9} lg={7}>
+                  <Stack gap={4}>
+                    <BannerTextDesktop>
+                      <h1>{title}</h1>
+                      <p className="text-start">{subTitle}</p>
+                    </BannerTextDesktop>
+                    <Stack direction="horizontal" gap={3} className="flex-wrap">
+                      <StyledOrangeButton
+                        onClick={() => handleRoutePush("events")}
+                      >{t`our events`}</StyledOrangeButton>
+                      <StyledTransparentButton
+                        onClick={() => handleRoutePush("digitalLibrary")}
+                      >
+                        {t`Digital Library`}
+                      </StyledTransparentButton>
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Col>
-            </Row>
-          </SlideBackground>
-        </Carousel.Item>
-      ))}
-    </StyledCarousel>
+                </Col>
+              </Row>
+            </SlideBackground>
+          </Carousel.Item>
+        ))}
+      </StyledCarousel>
+      <BannerCaptionMobile>
+        <h2>{title}</h2>
+        <p>{subTitle}</p>
+      </BannerCaptionMobile>
+    </>
   );
 };
 
