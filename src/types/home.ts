@@ -1,3 +1,8 @@
+export type BannerSlide = {
+  imageUrl: string;
+  hotspot?: { x: number; y: number };
+};
+
 export type HomeResponse = {
   liveYoutubeUrl: string;
   themeTitle: string;
@@ -10,6 +15,8 @@ export type HomeResponse = {
   publishedDate: Date;
   bannerSubTitle: string;
   bannerImageUrl: string;
+  bannerHotspot?: { x: number; y: number };
+  bannerSlides?: BannerSlide[];
   themeVerse: string;
   themeLogoUrl: string;
   whoWeAreMessage: string;

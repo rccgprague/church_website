@@ -29,6 +29,37 @@ export default defineType({
       },
     }),
     defineField({
+      name: "bannerSlides",
+      title: "Banner Slides",
+      description:
+        "Add multiple images for a slideshow banner. The Banner Title and Sub-Title above apply to all slides. Set the hotspot on each image so it stays in frame on mobile.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "slide",
+          title: "Slide",
+          fields: [
+            {
+              name: "label",
+              title: "Label",
+              type: "string",
+              description: "A short name to identify this slide in Studio (not shown on the website).",
+            },
+            {
+              name: "image",
+              title: "Slide Image",
+              type: "image",
+              options: { hotspot: true },
+            },
+          ],
+          preview: {
+            select: { title: "label", media: "image" },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "themeTitle",
       title: "Theme Title",
       type: "string",

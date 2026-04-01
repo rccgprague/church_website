@@ -4,6 +4,11 @@ export const QUERIES = {
     bannerTitle,
     bannerSubTitle,
     "bannerImageUrl": bannerImage.asset->url,
+    "bannerHotspot": bannerImage.hotspot,
+    "bannerSlides": bannerSlides[]{
+      "imageUrl": image.asset->url,
+      "hotspot": image.hotspot,
+    },
     liveYoutubeUrl,
     liveStartDateTime,
     themeTitle,
