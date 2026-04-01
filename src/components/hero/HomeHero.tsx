@@ -17,31 +17,12 @@ interface HomeHeroProps {
 }
 
 /**
- * Build a Sanity image URL with focal-point cropping for a given aspect ratio.
- * Falls back to the original URL for non-Sanity assets (e.g. local /images/*).
+ * Convert a Sanity hotspot (0–1 normalised) to a CSS background-position value.
+ * Falls back to "center center" when no hotspot is set.
  */
-function buildBannerUrl(
-  url: string,
-  hotspot: { x: number; y: number } | undefined,
-  format: "landscape" | "portrait"
-): string {
-  if (!url || !url.includes("cdn.sanity.io")) return url;
-
-  const base = url.split("?")[0];
-  const params: Record<string, string> = {
-    w: format === "landscape" ? "1920" : "600",
-    h: format === "landscape" ? "900" : "900",
-    fit: "crop",
-    crop: "focalpoint",
-    auto: "format",
-  };
-
-  if (hotspot) {
-    params["fp-x"] = hotspot.x.toFixed(4);
-    params["fp-y"] = hotspot.y.toFixed(4);
-  }
-
-  return `${base}?${new URLSearchParams(params)}`;
+function hotspotPosition(hotspot?: { x: number; y: number }): string {
+  if (!hotspot) return "center center";
+  return `${(hotspot.x * 100).toFixed(1)}% ${(hotspot.y * 100).toFixed(1)}%`;
 }
 
 const GRADIENT =
@@ -119,10 +100,10 @@ const StyledCarousel = styled(Carousel)`
   )}
 `;
 
-const SlideBackground = styled.div<{ desktopBg: string; mobileBg: string }>`
-  background-image: ${GRADIENT}, url(${(p) => p.desktopBg});
+const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
+  background-image: ${GRADIENT}, url(${(p) => p.bg});
   background-size: cover;
-  background-position: center center;
+  background-position: ${(p) => p.bgPosition};
   background-repeat: no-repeat;
   min-height: 85vh;
   display: flex;
@@ -171,9 +152,7 @@ const SlideBackground = styled.div<{ desktopBg: string; mobileBg: string }>`
   ${mediaBreakpointDown(
     BREAKPOINTS.md,
     css`
-      /* Switch to portrait crop on tablet/mobile */
-      background-image: ${GRADIENT}, url(${(p: any) => p.mobileBg});
-      min-height: 60vh;
+      min-height: 55vh;
       padding: 0 24px 60px;
 
       h1 {
@@ -189,7 +168,7 @@ const SlideBackground = styled.div<{ desktopBg: string; mobileBg: string }>`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      min-height: 55vh;
+      min-height: 50vh;
       padding: 0 16px 70px;
 
       h1 {
@@ -267,8 +246,8 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
       {slides.map((slide, index) => (
         <Carousel.Item key={index}>
           <SlideBackground
-            desktopBg={buildBannerUrl(slide.imageUrl, slide.hotspot, "landscape")}
-            mobileBg={buildBannerUrl(slide.imageUrl, slide.hotspot, "portrait")}
+            bg={slide.imageUrl}
+            bgPosition={hotspotPosition(slide.hotspot)}
           >
             <Row className="w-100">
               <Col xs={12} md={9} lg={7}>

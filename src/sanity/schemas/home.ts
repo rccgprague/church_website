@@ -41,6 +41,12 @@ export default defineType({
           title: "Slide",
           fields: [
             {
+              name: "label",
+              title: "Label",
+              type: "string",
+              description: "A short name to identify this slide in Studio (not shown on the website).",
+            },
+            {
               name: "image",
               title: "Slide Image",
               type: "image",
@@ -48,7 +54,7 @@ export default defineType({
             },
           ],
           preview: {
-            select: { media: "image" },
+            select: { title: "label", media: "image" },
           },
         },
       ],
