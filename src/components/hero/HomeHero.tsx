@@ -168,7 +168,7 @@ const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      min-height: 50vh;
+      min-height: 40vh;
       padding: 0 16px 70px;
 
       h1 {
