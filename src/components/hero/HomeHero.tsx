@@ -212,9 +212,9 @@ export const StyledOrangeButton = styled(Button)`
     BREAKPOINTS.sm,
     css`
       width: auto;
-      height: 40px;
-      padding: 0 18px;
-      font-size: 13px;
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12px;
     `
   )}
 `;
@@ -227,7 +227,7 @@ const BannerTextDesktop = styled.div`
 /** Title + subtitle below the banner — only visible on mobile/tablet (≤lg) */
 const BannerCaptionMobile = styled.div`
   display: none;
-  background-color: ${Theme.colors.dark};
+  background-color: ${Theme.colors.grey};
   padding: 28px 20px 24px;
 
   h2 {
@@ -275,9 +275,9 @@ const StyledTransparentButton = styled(Button)`
     BREAKPOINTS.sm,
     css`
       width: auto;
-      height: 40px;
-      padding: 0 18px;
-      font-size: 13px;
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12px;
     `
   )}
 `;
