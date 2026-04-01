@@ -27,6 +27,9 @@ import { PostResponse } from "../types/post";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const translation = await loadCatalog(ctx.locale!);
   const initialHome = await getHomePage({ language: ctx.locale! });
+  // Always fetch English as a banner fallback for non-English locales
+  const initialHomeEn =
+    ctx.locale !== "en" ? await getHomePage({ language: "en" }) : initialHome;
   const initialEvents = await getEvents({ language: ctx.locale! });
   const initialTeam = await getTeam({ language: ctx.locale! });
   const initialTestimonials = await getTestimonials();
@@ -35,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       translation,
       initialHome,
+      initialHomeEn,
       initialEvents,
       initialTeam,
       initialTestimonials,
@@ -46,6 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export default function Home({
   initialHome,
+  initialHomeEn,
   initialEvents,
   initialTeam,
   initialTestimonials,
@@ -53,6 +58,7 @@ export default function Home({
   serverLocale,
 }: {
   initialHome: HomeResponse[];
+  initialHomeEn: HomeResponse[];
   initialEvents: EventsResponse[];
   initialTeam: TeamResponse[];
   initialTestimonials: TestimonialResponse[];
@@ -65,12 +71,24 @@ export default function Home({
    */
   useLingui();
   const { data, isLoading } = useGetHomeContent(initialHome, serverLocale);
+
+  const homeData = data?.at(0);
+  const enHomeData = initialHomeEn?.at(0);
+
+  // Use the current locale's banner only if it has slides; otherwise fall back to English
+  const hasCzSlides =
+    homeData?.bannerSlides && homeData.bannerSlides.length > 0;
+  const bannerData = hasCzSlides ? homeData : (enHomeData ?? homeData);
+
   const {
     bannerTitle,
     bannerSubTitle,
     bannerImageUrl,
     bannerHotspot,
     bannerSlides,
+  } = bannerData ?? {};
+
+  const {
     liveStartDateTime,
     liveYoutubeUrl,
     themeImageUrl,
@@ -82,7 +100,7 @@ export default function Home({
     whoWeAreMessage,
     whoWeAreImageUrl,
     whoWeAreYoutubeUrl,
-  } = data?.at(0) ?? {};
+  } = homeData ?? {};
 
   const heroSlides =
     bannerSlides && bannerSlides.length > 0

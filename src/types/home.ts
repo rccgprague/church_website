@@ -1,6 +1,8 @@
 export type BannerSlide = {
   imageUrl: string;
   hotspot?: { x: number; y: number };
+  mobileImageUrl?: string;
+  mobileHotspot?: { x: number; y: number };
 };
 
 export type HomeResponse = {

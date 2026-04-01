@@ -100,7 +100,8 @@ msgid "Covenant parish prague Story"
 msgstr "Smlouva farnost pražský příběh"
 
 #: src/components/blog/BlogDetail.tsx:32
-#: src/components/hero/HomeHero.tsx:264
+#: src/components/hero/HomeHero.tsx:321
+#: src/components/hero/HomeHero.tsx:342
 #: src/components/layout/AppFooter.tsx:116
 #: src/components/layout/AppHeader.tsx:130
 msgid "Digital Library"
@@ -210,7 +211,8 @@ msgstr "Online Bible"
 msgid "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
 msgstr "Náš sbor je zasvěcen službě naší komunitě a šíření Boží lásky a věříme, že otevřená komunikace je klíčem k podpoře pevných vztahů."
 
-#: src/components/hero/HomeHero.tsx:260
+#: src/components/hero/HomeHero.tsx:317
+#: src/components/hero/HomeHero.tsx:338
 msgid "our events"
 msgstr "naše akce"
 
@@ -266,7 +268,7 @@ msgstr "RCCG Praha - O nás"
 msgid "RCCG Prague - Contact us"
 msgstr "RCCG Praha - Kontaktujte nás"
 
-#: src/pages/index.tsx:95
+#: src/pages/index.tsx:113
 msgid "RCCG Prague - Covenant Parish"
 msgstr "RCCG Prague - Covenant Parish"
 
@@ -373,7 +375,7 @@ msgstr "Covenant Parish je součástí Redeemed Christian Church of God (RCCG) W
 msgid "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
 msgstr "Covenant Parish je ústředím církve The Redeemed Christian Church of God (RCCG) v Praze, Česká republika."
 
-#: src/pages/index.tsx:108
+#: src/pages/index.tsx:126
 msgid "The Covenant Place"
 msgstr "Místo úmluvy"
 
@@ -381,7 +383,7 @@ msgstr "Místo úmluvy"
 msgid "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.O) has been used mightily by God, to bring phenomenal growth, innovation and expansion to the church, in fulfillment of the covenant the founder had with the Almighty God."
 msgstr "Současného generálního dozorce, pastora E. Adeboye (s oblibou nazývaného Tatínek G.O.) Bůh mocně použil, aby přinesl církvi fenomenální růst, inovaci a expanzi, aby naplnil smlouvu, kterou zakladatel uzavřel s Všemohoucím Bohem."
 
-#: src/pages/index.tsx:98
+#: src/pages/index.tsx:116
 msgid "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
 msgstr "RCCG Prague Covenant Parish je hlavním sídlem Církve vykoupené křesťanské církve Boží Praha, Česká republika."
 
@@ -423,7 +425,7 @@ msgstr "středy"
 msgid "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
 msgstr "Vítejte ve fotogalerii našeho sboru, kde předvádíme krásu a radost našeho společenství víry v akci. Tato galerie slouží jako vizuální svědectví o lásce, naději a jednotě, kterou zažíváme jako součást naší církevní rodiny, od živých bohoslužeb až po potěšující společenské akce."
 
-#: src/pages/index.tsx:109
+#: src/pages/index.tsx:127
 msgid "Welcome to RCCG Prague"
 msgstr "Vítejte v RCCG Praha"
 

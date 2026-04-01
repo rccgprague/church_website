@@ -8,6 +8,8 @@ export const QUERIES = {
     "bannerSlides": bannerSlides[]{
       "imageUrl": image.asset->url,
       "hotspot": image.hotspot,
+      "mobileImageUrl": mobileImage.asset->url,
+      "mobileHotspot": mobileImage.hotspot,
     },
     liveYoutubeUrl,
     liveStartDateTime,

@@ -100,7 +100,12 @@ const StyledCarousel = styled(Carousel)`
   )}
 `;
 
-const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
+const SlideBackground = styled.div<{
+  bg: string;
+  bgPosition: string;
+  mobileBg: string;
+  mobileBgPos: string;
+}>`
   background-image: ${GRADIENT}, url(${(p) => p.bg});
   background-size: cover;
   background-position: ${(p) => p.bgPosition};
@@ -169,7 +174,7 @@ const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
     BREAKPOINTS.sm,
     css`
       min-height: 30vh;
-      padding: 0 16px 70px;
+      padding: 0 16px 44px;
 
       h1 {
         font-size: 24px;
@@ -182,6 +187,12 @@ const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
       }
     `
   )}
+
+  /* Portrait phones/tablets: switch to the mobile-optimised image */
+  @media (max-width: ${BREAKPOINTS.md}px) and (orientation: portrait) {
+    background-image: ${GRADIENT}, url(${(p) => p.mobileBg});
+    background-position: ${(p) => p.mobileBgPos};
+  }
 `;
 
 export const StyledOrangeButton = styled(Button)`
@@ -200,9 +211,51 @@ export const StyledOrangeButton = styled(Button)`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      width: 160px;
-      height: 52px;
-      font-size: 14px;
+      width: auto;
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12px;
+    `
+  )}
+`;
+
+/** Title, subtitle and buttons inside the banner — hidden on mobile/tablet (≤lg) */
+const BannerTextDesktop = styled.div`
+  ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: none;`)}
+`;
+
+/** Title + subtitle below the banner — only visible on mobile/tablet (≤lg) */
+const BannerCaptionMobile = styled.div`
+  display: none;
+  background-color: ${Theme.colors.grey};
+  padding: 28px 20px 24px;
+  text-align: center;
+
+  h2 {
+    ${Fonts.headingOne};
+    color: ${Theme.colors.white};
+    font-size: 26px;
+    line-height: 1.25;
+    max-width: 520px;
+    margin: 0 auto 12px;
+  }
+
+  p {
+    ${Fonts.paragraphHero};
+    color: ${Theme.colors.light};
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: block;`)}
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.sm,
+    css`
+      padding: 20px 16px 20px;
+      h2 { font-size: 22px; }
+      p { font-size: 14px; }
     `
   )}
 `;
@@ -222,9 +275,10 @@ const StyledTransparentButton = styled(Button)`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      width: 150px;
-      height: 52px;
-      font-size: 14px;
+      width: auto;
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12px;
     `
   )}
 `;
@@ -237,40 +291,60 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
   };
 
   return (
-    <StyledCarousel
-      interval={6000}
-      fade
-      indicators={slides.length > 1}
-      controls={slides.length > 1}
-    >
-      {slides.map((slide, index) => (
-        <Carousel.Item key={index}>
-          <SlideBackground
-            bg={slide.imageUrl}
-            bgPosition={hotspotPosition(slide.hotspot)}
+    <>
+      <StyledCarousel
+        interval={6000}
+        fade
+        indicators={slides.length > 1}
+        controls={slides.length > 1}
+      >
+        {slides.map((slide, index) => (
+          <Carousel.Item key={index}>
+            <SlideBackground
+              bg={slide.imageUrl}
+              bgPosition={hotspotPosition(slide.hotspot)}
+              mobileBg={slide.mobileImageUrl ?? slide.imageUrl}
+              mobileBgPos={hotspotPosition(slide.mobileHotspot ?? slide.hotspot)}
+            >
+              <Row className="w-100">
+                <Col xs={12} md={9} lg={7}>
+                  <BannerTextDesktop>
+                    <Stack gap={4}>
+                      <h1>{title}</h1>
+                      <p className="text-start">{subTitle}</p>
+                      <Stack direction="horizontal" gap={3} className="flex-wrap">
+                        <StyledOrangeButton
+                          onClick={() => handleRoutePush("events")}
+                        >{t`our events`}</StyledOrangeButton>
+                        <StyledTransparentButton
+                          onClick={() => handleRoutePush("digitalLibrary")}
+                        >
+                          {t`Digital Library`}
+                        </StyledTransparentButton>
+                      </Stack>
+                    </Stack>
+                  </BannerTextDesktop>
+                </Col>
+              </Row>
+            </SlideBackground>
+          </Carousel.Item>
+        ))}
+      </StyledCarousel>
+      <BannerCaptionMobile>
+        <h2>{title}</h2>
+        <p>{subTitle}</p>
+        <Stack direction="horizontal" gap={3} className="flex-wrap justify-content-center mt-3">
+          <StyledOrangeButton
+            onClick={() => handleRoutePush("events")}
+          >{t`our events`}</StyledOrangeButton>
+          <StyledTransparentButton
+            onClick={() => handleRoutePush("digitalLibrary")}
           >
-            <Row className="w-100">
-              <Col xs={12} md={9} lg={7}>
-                <Stack gap={4}>
-                  <h1>{title}</h1>
-                  <p className="text-start">{subTitle}</p>
-                  <Stack direction="horizontal" gap={3} className="flex-wrap">
-                    <StyledOrangeButton
-                      onClick={() => handleRoutePush("events")}
-                    >{t`our events`}</StyledOrangeButton>
-                    <StyledTransparentButton
-                      onClick={() => handleRoutePush("digitalLibrary")}
-                    >
-                      {t`Digital Library`}
-                    </StyledTransparentButton>
-                  </Stack>
-                </Stack>
-              </Col>
-            </Row>
-          </SlideBackground>
-        </Carousel.Item>
-      ))}
-    </StyledCarousel>
+            {t`Digital Library`}
+          </StyledTransparentButton>
+        </Stack>
+      </BannerCaptionMobile>
+    </>
   );
 };
 
