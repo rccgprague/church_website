@@ -174,7 +174,7 @@ const SlideBackground = styled.div<{
     BREAKPOINTS.sm,
     css`
       min-height: 30vh;
-      padding: 0 16px 70px;
+      padding: 0 16px 44px;
 
       h1 {
         font-size: 24px;
@@ -211,9 +211,10 @@ export const StyledOrangeButton = styled(Button)`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      width: 160px;
-      height: 52px;
-      font-size: 14px;
+      width: auto;
+      height: 40px;
+      padding: 0 18px;
+      font-size: 13px;
     `
   )}
 `;
@@ -226,11 +227,12 @@ const BannerTextDesktop = styled.div`
 /** Title + subtitle below the banner — only visible on mobile/tablet (≤lg) */
 const BannerCaptionMobile = styled.div`
   display: none;
-  padding: 28px 20px 4px;
+  background-color: ${Theme.colors.dark};
+  padding: 28px 20px 24px;
 
   h2 {
     ${Fonts.headingOne};
-    color: ${Theme.colors.dark};
+    color: ${Theme.colors.white};
     font-size: 26px;
     line-height: 1.25;
     max-width: 520px;
@@ -239,7 +241,7 @@ const BannerCaptionMobile = styled.div`
 
   p {
     ${Fonts.paragraphHero};
-    color: ${Theme.colors.grey};
+    color: ${Theme.colors.light};
     font-size: 15px;
     max-width: 520px;
     margin: 0;
@@ -250,7 +252,7 @@ const BannerCaptionMobile = styled.div`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      padding: 20px 16px 4px;
+      padding: 20px 16px 20px;
       h2 { font-size: 22px; }
       p { font-size: 14px; }
     `
@@ -272,9 +274,10 @@ const StyledTransparentButton = styled(Button)`
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
     css`
-      width: 150px;
-      height: 52px;
-      font-size: 14px;
+      width: auto;
+      height: 40px;
+      padding: 0 18px;
+      font-size: 13px;
     `
   )}
 `;
