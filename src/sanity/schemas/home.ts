@@ -52,6 +52,14 @@ export default defineType({
               type: "image",
               options: { hotspot: true },
             },
+            {
+              name: "mobileImage",
+              title: "Mobile Image (optional)",
+              type: "image",
+              options: { hotspot: true },
+              description:
+                "Portrait or square crop for mobile portrait view. Falls back to the main Slide Image if not provided.",
+            },
           ],
           preview: {
             select: { title: "label", media: "image" },

@@ -100,7 +100,12 @@ const StyledCarousel = styled(Carousel)`
   )}
 `;
 
-const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
+const SlideBackground = styled.div<{
+  bg: string;
+  bgPosition: string;
+  mobileBg: string;
+  mobileBgPos: string;
+}>`
   background-image: ${GRADIENT}, url(${(p) => p.bg});
   background-size: cover;
   background-position: ${(p) => p.bgPosition};
@@ -182,6 +187,12 @@ const SlideBackground = styled.div<{ bg: string; bgPosition: string }>`
       }
     `
   )}
+
+  /* Portrait phones/tablets: switch to the mobile-optimised image */
+  @media (max-width: ${BREAKPOINTS.md}px) and (orientation: portrait) {
+    background-image: ${GRADIENT}, url(${(p) => p.mobileBg});
+    background-position: ${(p) => p.mobileBgPos};
+  }
 `;
 
 export const StyledOrangeButton = styled(Button)`
@@ -248,6 +259,8 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
           <SlideBackground
             bg={slide.imageUrl}
             bgPosition={hotspotPosition(slide.hotspot)}
+            mobileBg={slide.mobileImageUrl ?? slide.imageUrl}
+            mobileBgPos={hotspotPosition(slide.mobileHotspot ?? slide.hotspot)}
           >
             <Row className="w-100">
               <Col xs={12} md={9} lg={7}>
