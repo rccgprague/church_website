@@ -26,6 +26,11 @@ const StyledCountdown = styled.div`
       row-gap: 20px;
     }
   }
+  @media (max-width: 576px) {
+    .countdown-col {
+      padding: 28px 20px 52px;
+    }
+  }
 `;
 
 const StyledCountdounCTA = styled(StyledOrangeButton)`

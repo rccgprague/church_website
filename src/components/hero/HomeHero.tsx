@@ -229,6 +229,7 @@ const BannerCaptionMobile = styled.div`
   display: none;
   background-color: ${Theme.colors.grey};
   padding: 28px 20px 24px;
+  text-align: center;
 
   h2 {
     ${Fonts.headingOne};
@@ -236,7 +237,7 @@ const BannerCaptionMobile = styled.div`
     font-size: 26px;
     line-height: 1.25;
     max-width: 520px;
-    margin-bottom: 12px;
+    margin: 0 auto 12px;
   }
 
   p {
@@ -244,7 +245,7 @@ const BannerCaptionMobile = styled.div`
     color: ${Theme.colors.light};
     font-size: 15px;
     max-width: 520px;
-    margin: 0;
+    margin: 0 auto;
   }
 
   ${mediaBreakpointDown(BREAKPOINTS.lg, css`display: block;`)}
@@ -332,7 +333,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
       <BannerCaptionMobile>
         <h2>{title}</h2>
         <p>{subTitle}</p>
-        <Stack direction="horizontal" gap={3} className="flex-wrap mt-3">
+        <Stack direction="horizontal" gap={3} className="flex-wrap justify-content-center mt-3">
           <StyledOrangeButton
             onClick={() => handleRoutePush("events")}
           >{t`our events`}</StyledOrangeButton>
