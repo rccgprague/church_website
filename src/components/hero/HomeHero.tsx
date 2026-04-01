@@ -294,6 +294,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ title, subTitle, slides }) => {
     <>
       <StyledCarousel
         interval={6000}
+        ride="carousel"
         fade
         indicators={slides.length > 1}
         controls={slides.length > 1}
