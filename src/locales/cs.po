@@ -66,7 +66,7 @@ msgstr "Oslavte s námi: Nadcházející akce ve farnosti Covenant v Praze."
 msgid "Celebration Service"
 msgstr "Hlavní slavnostní shromáždění"
 
-#: src/components/Countdown.tsx:231
+#: src/components/Countdown.tsx:229
 msgid "Click on the button below to join our live event"
 msgstr "Kliknutím na tlačítko níže se připojíte k naší živé události"
 
@@ -179,7 +179,7 @@ msgstr "Mým upřímným přáním je, abyste se s námi zapojili na této platf
 msgid "Join Event"
 msgstr "Připojte se k události"
 
-#: src/components/Countdown.tsx:234
+#: src/components/Countdown.tsx:232
 msgid "Join live event"
 msgstr "Připojte se k živé události"
 
@@ -187,9 +187,9 @@ msgstr "Připojte se k živé události"
 msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 msgstr "Připojte se k nám na této cestě, kdy oslavujeme požehnání naší společné víry a znovu prožíváme vzácné vzpomínky. Kéž vás tyto fotografie inspirují a prohloubí váš vztah k naší církevní komunitě."
 
-#: src/components/Countdown.tsx:168
+#: src/components/Countdown.tsx:238
 msgid "Latest Sermons"
-msgstr ""
+msgstr "Nejnovější kázání"
 
 #: src/components/contact/ContactInfo.tsx:149
 msgid "Message"
@@ -403,15 +403,19 @@ msgstr "pochopení toho, čím je náš sbor jedinečný a proč jsme nadšení 
 msgid "Upcoming Events"
 msgstr "Připravované akce"
 
-#: src/components/Countdown.tsx:193
+#: src/components/Countdown.tsx:186
 msgid "Watch all on YouTube →"
-msgstr ""
+msgstr "Sledovat vše na YouTube →"
 
-#: src/components/Countdown.tsx:171
+#: src/components/Countdown.tsx:244
+msgid "Watch Latest Sermons"
+msgstr "Sledovat nejnovější kázání"
+
+#: src/components/Countdown.tsx:241
 msgid "Watch our most recent services and messages"
-msgstr ""
+msgstr "Sledujte naše nejnovější bohoslužby a poselství"
 
-#: src/components/Countdown.tsx:228
+#: src/components/Countdown.tsx:226
 msgid "We are live!"
 msgstr "Jsme živí!"
 
