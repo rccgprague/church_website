@@ -100,8 +100,8 @@ msgid "Covenant parish prague Story"
 msgstr "Covenant parish prague Story"
 
 #: src/components/blog/BlogDetail.tsx:32
-#: src/components/hero/HomeHero.tsx:322
-#: src/components/hero/HomeHero.tsx:343
+#: src/components/hero/HomeHero.tsx:323
+#: src/components/hero/HomeHero.tsx:344
 #: src/components/layout/AppFooter.tsx:116
 #: src/components/layout/AppHeader.tsx:130
 msgid "Digital Library"
@@ -211,8 +211,8 @@ msgstr "Online Bible"
 msgid "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
 msgstr "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
 
-#: src/components/hero/HomeHero.tsx:318
-#: src/components/hero/HomeHero.tsx:339
+#: src/components/hero/HomeHero.tsx:319
+#: src/components/hero/HomeHero.tsx:340
 msgid "our events"
 msgstr "our events"
 
