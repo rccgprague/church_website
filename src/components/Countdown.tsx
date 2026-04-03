@@ -15,7 +15,7 @@ import { format } from "date-fns";
 import { YTVideo } from "../types/live";
 
 const StyledCountdown = styled.div`
-  background-color: ${Colors.grey};
+  background-color: ${Colors.dark};
   padding-bottom: 120px;
 
   .live-col {

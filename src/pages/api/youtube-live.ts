@@ -21,7 +21,8 @@ export type YTLiveResult = {
 };
 
 async function searchBroadcast(
-  eventType: "live" | "upcoming"
+  eventType: "live" | "upcoming",
+  referer: string
 ): Promise<string | null> {
   const url = new URL("https://www.googleapis.com/youtube/v3/search");
   url.searchParams.set("part", "snippet");
@@ -31,19 +32,19 @@ async function searchBroadcast(
   url.searchParams.set("maxResults", "1");
   url.searchParams.set("key", API_KEY!);
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), { headers: { Referer: referer } });
   if (!res.ok) return null;
   const data = await res.json();
   return (data.items?.[0]?.id?.videoId as string) ?? null;
 }
 
-async function getScheduledStartTime(videoId: string): Promise<string | null> {
+async function getScheduledStartTime(videoId: string, referer: string): Promise<string | null> {
   const url = new URL("https://www.googleapis.com/youtube/v3/videos");
   url.searchParams.set("part", "liveStreamingDetails");
   url.searchParams.set("id", videoId);
   url.searchParams.set("key", API_KEY!);
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), { headers: { Referer: referer } });
   if (!res.ok) return null;
   const data = await res.json();
   return (
@@ -53,7 +54,7 @@ async function getScheduledStartTime(videoId: string): Promise<string | null> {
 }
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (!API_KEY || !CHANNEL_ID) {
@@ -66,9 +67,11 @@ export default async function handler(
     return res.json(_cache.data);
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${req.headers.host}`;
+
   try {
     // 1. Is there a stream live right now?
-    const liveVideoId = await searchBroadcast("live");
+    const liveVideoId = await searchBroadcast("live", siteUrl);
     if (liveVideoId) {
       const result: YTLiveResult = {
         videoId: liveVideoId,
@@ -81,9 +84,9 @@ export default async function handler(
     }
 
     // 2. Is there an upcoming scheduled stream?
-    const upcomingVideoId = await searchBroadcast("upcoming");
+    const upcomingVideoId = await searchBroadcast("upcoming", siteUrl);
     if (upcomingVideoId) {
-      const scheduledStartTime = await getScheduledStartTime(upcomingVideoId);
+      const scheduledStartTime = await getScheduledStartTime(upcomingVideoId, siteUrl);
       const result: YTLiveResult = {
         videoId: upcomingVideoId,
         scheduledStartTime,

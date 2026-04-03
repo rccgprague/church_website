@@ -10,7 +10,7 @@ const CACHE_TTL = 2 * 60 * 60 * 1000;
 let _cache: { data: YTVideo[]; ts: number } | null = null;
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (!API_KEY || !CHANNEL_ID) {
@@ -31,7 +31,10 @@ export default async function handler(
     url.searchParams.set("maxResults", "6");
     url.searchParams.set("key", API_KEY!);
 
-    const ytRes = await fetch(url.toString());
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${req.headers.host}`;
+    const ytRes = await fetch(url.toString(), {
+      headers: { Referer: siteUrl },
+    });
     if (!ytRes.ok) {
       const errBody = await ytRes.text();
       return res.status(502).json({
