@@ -64,14 +64,9 @@ const LiveDot = styled.span`
 
 const VideoGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
   margin-top: 24px;
-
-  ${mediaBreakpointDown(
-    BREAKPOINTS.md,
-    css`grid-template-columns: repeat(2, 1fr);`
-  )}
 
   ${mediaBreakpointDown(
     BREAKPOINTS.sm,
@@ -159,7 +154,7 @@ const RecentVideosModal = ({ videos }: { videos: YTVideo[] }) => {
     setBody(<LiveYoutubeIframe youtubeId={videoId} />);
   };
 
-  const CHANNEL_URL = `https://www.youtube.com/channel/${process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID}`;
+  const CHANNEL_URL = "https://www.youtube.com/@rccgpraguecovenantparish924/streams";
 
   return (
     <div>
