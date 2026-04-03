@@ -66,7 +66,7 @@ msgstr "Oslavte s námi: Nadcházející akce ve farnosti Covenant v Praze."
 msgid "Celebration Service"
 msgstr "Hlavní slavnostní shromáždění"
 
-#: src/components/Countdown.tsx:123
+#: src/components/Countdown.tsx:229
 msgid "Click on the button below to join our live event"
 msgstr "Kliknutím na tlačítko níže se připojíte k naší živé události"
 
@@ -100,8 +100,8 @@ msgid "Covenant parish prague Story"
 msgstr "Smlouva farnost pražský příběh"
 
 #: src/components/blog/BlogDetail.tsx:32
-#: src/components/hero/HomeHero.tsx:322
-#: src/components/hero/HomeHero.tsx:343
+#: src/components/hero/HomeHero.tsx:323
+#: src/components/hero/HomeHero.tsx:344
 #: src/components/layout/AppFooter.tsx:116
 #: src/components/layout/AppHeader.tsx:130
 msgid "Digital Library"
@@ -179,13 +179,17 @@ msgstr "Mým upřímným přáním je, abyste se s námi zapojili na této platf
 msgid "Join Event"
 msgstr "Připojte se k události"
 
-#: src/components/Countdown.tsx:161
+#: src/components/Countdown.tsx:232
 msgid "Join live event"
 msgstr "Připojte se k živé události"
 
 #: src/pages/gallery.tsx:37
 msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 msgstr "Připojte se k nám na této cestě, kdy oslavujeme požehnání naší společné víry a znovu prožíváme vzácné vzpomínky. Kéž vás tyto fotografie inspirují a prohloubí váš vztah k naší církevní komunitě."
+
+#: src/components/Countdown.tsx:238
+msgid "Latest Sermons"
+msgstr "Nejnovější kázání"
 
 #: src/components/contact/ContactInfo.tsx:149
 msgid "Message"
@@ -211,8 +215,8 @@ msgstr "Online Bible"
 msgid "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
 msgstr "Náš sbor je zasvěcen službě naší komunitě a šíření Boží lásky a věříme, že otevřená komunikace je klíčem k podpoře pevných vztahů."
 
-#: src/components/hero/HomeHero.tsx:318
-#: src/components/hero/HomeHero.tsx:339
+#: src/components/hero/HomeHero.tsx:319
+#: src/components/hero/HomeHero.tsx:340
 msgid "our events"
 msgstr "naše akce"
 
@@ -268,7 +272,7 @@ msgstr "RCCG Praha - O nás"
 msgid "RCCG Prague - Contact us"
 msgstr "RCCG Praha - Kontaktujte nás"
 
-#: src/pages/index.tsx:113
+#: src/pages/index.tsx:112
 msgid "RCCG Prague - Covenant Parish"
 msgstr "RCCG Prague - Covenant Parish"
 
@@ -375,7 +379,7 @@ msgstr "Covenant Parish je součástí Redeemed Christian Church of God (RCCG) W
 msgid "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
 msgstr "Covenant Parish je ústředím církve The Redeemed Christian Church of God (RCCG) v Praze, Česká republika."
 
-#: src/pages/index.tsx:126
+#: src/pages/index.tsx:125
 msgid "The Covenant Place"
 msgstr "Místo úmluvy"
 
@@ -383,7 +387,7 @@ msgstr "Místo úmluvy"
 msgid "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.O) has been used mightily by God, to bring phenomenal growth, innovation and expansion to the church, in fulfillment of the covenant the founder had with the Almighty God."
 msgstr "Současného generálního dozorce, pastora E. Adeboye (s oblibou nazývaného Tatínek G.O.) Bůh mocně použil, aby přinesl církvi fenomenální růst, inovaci a expanzi, aby naplnil smlouvu, kterou zakladatel uzavřel s Všemohoucím Bohem."
 
-#: src/pages/index.tsx:116
+#: src/pages/index.tsx:115
 msgid "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
 msgstr "RCCG Prague Covenant Parish je hlavním sídlem Církve vykoupené křesťanské církve Boží Praha, Česká republika."
 
@@ -399,11 +403,19 @@ msgstr "pochopení toho, čím je náš sbor jedinečný a proč jsme nadšení 
 msgid "Upcoming Events"
 msgstr "Připravované akce"
 
-#: src/components/Countdown.tsx:161
-msgid "Watch Rebroadcast"
-msgstr "Sledujte Rebroadcast"
+#: src/components/Countdown.tsx:186
+msgid "Watch all on YouTube →"
+msgstr "Sledovat vše na YouTube →"
 
-#: src/components/Countdown.tsx:122
+#: src/components/Countdown.tsx:244
+msgid "Watch Latest Sermons"
+msgstr "Sledovat nejnovější kázání"
+
+#: src/components/Countdown.tsx:241
+msgid "Watch our most recent services and messages"
+msgstr "Sledujte naše nejnovější bohoslužby a poselství"
+
+#: src/components/Countdown.tsx:226
 msgid "We are live!"
 msgstr "Jsme živí!"
 
@@ -413,10 +425,6 @@ msgid ""
 "resurrection of Jesus Christ, and to discover the hope that"
 msgstr "Zveme vás, abyste se k nám připojili na zvláštní oslavu vzkříšení Ježíše Krista a objevili naději, že se to stane"
 
-#: src/components/Countdown.tsx:127
-msgid "We will be live in:"
-msgstr "Budeme bydlet v:"
-
 #: src/components/layout/AppFooter.tsx:140
 msgid "Wednesdays"
 msgstr "středy"
@@ -425,7 +433,7 @@ msgstr "středy"
 msgid "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
 msgstr "Vítejte ve fotogalerii našeho sboru, kde předvádíme krásu a radost našeho společenství víry v akci. Tato galerie slouží jako vizuální svědectví o lásce, naději a jednotě, kterou zažíváme jako součást naší církevní rodiny, od živých bohoslužeb až po potěšující společenské akce."
 
-#: src/pages/index.tsx:127
+#: src/pages/index.tsx:126
 msgid "Welcome to RCCG Prague"
 msgstr "Vítejte v RCCG Praha"
 

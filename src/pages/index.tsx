@@ -75,18 +75,17 @@ export default function Home({
   const homeData = data?.at(0);
   const enHomeData = initialHomeEn?.at(0);
 
-  // Use the current locale's banner only if it has slides; otherwise fall back to English
-  const hasCzSlides =
-    homeData?.bannerSlides && homeData.bannerSlides.length > 0;
-  const bannerData = hasCzSlides ? homeData : (enHomeData ?? homeData);
+  // Title and subtitle always come from the current locale
+  const bannerTitle = homeData?.bannerTitle;
+  const bannerSubTitle = homeData?.bannerSubTitle;
 
-  const {
-    bannerTitle,
-    bannerSubTitle,
-    bannerImageUrl,
-    bannerHotspot,
-    bannerSlides,
-  } = bannerData ?? {};
+  // Slides fall back to English if the current locale has none
+  const hasLocaleSlides =
+    homeData?.bannerSlides && homeData.bannerSlides.length > 0;
+  const slideSource = hasLocaleSlides ? homeData : (enHomeData ?? homeData);
+  const bannerSlides = slideSource?.bannerSlides;
+  const bannerImageUrl = slideSource?.bannerImageUrl;
+  const bannerHotspot = slideSource?.bannerHotspot;
 
   const {
     liveStartDateTime,
