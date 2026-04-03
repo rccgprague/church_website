@@ -30,9 +30,14 @@ async function fetchLiveData(): Promise<LiveResponse> {
 }
 
 async function fetchRecentVideos(): Promise<YTVideo[]> {
-  const res = await fetch("/api/youtube-videos");
-  if (!res.ok) return [];
-  return res.json();
+  try {
+    const res = await fetch("/api/youtube-videos");
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
 }
 
 export const useGetLiveDetails = () => {

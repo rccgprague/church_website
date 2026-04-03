@@ -66,7 +66,7 @@ msgstr "Celebrate with Us: Upcoming Events at Covenant parish prague."
 msgid "Celebration Service"
 msgstr "Celebration Service"
 
-#: src/components/Countdown.tsx:123
+#: src/components/Countdown.tsx:229
 msgid "Click on the button below to join our live event"
 msgstr "Click on the button below to join our live event"
 
@@ -179,13 +179,17 @@ msgstr "It is my sincere desire to have you engage with us on this platform to e
 msgid "Join Event"
 msgstr "Join Event"
 
-#: src/components/Countdown.tsx:161
+#: src/components/Countdown.tsx:232
 msgid "Join live event"
 msgstr "Join live event"
 
 #: src/pages/gallery.tsx:37
 msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 msgstr "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
+
+#: src/components/Countdown.tsx:168
+msgid "Latest Sermons"
+msgstr "Latest Sermons"
 
 #: src/components/contact/ContactInfo.tsx:149
 msgid "Message"
@@ -268,7 +272,7 @@ msgstr "RCCG Prague - About us"
 msgid "RCCG Prague - Contact us"
 msgstr "RCCG Prague - Contact us"
 
-#: src/pages/index.tsx:113
+#: src/pages/index.tsx:112
 msgid "RCCG Prague - Covenant Parish"
 msgstr ""
 
@@ -375,7 +379,7 @@ msgstr "The Covenant Parish is a part of the Redeemed Christian Church of God (R
 msgid "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
 msgstr "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
 
-#: src/pages/index.tsx:126
+#: src/pages/index.tsx:125
 msgid "The Covenant Place"
 msgstr "The Covenant Place"
 
@@ -383,7 +387,7 @@ msgstr "The Covenant Place"
 msgid "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.O) has been used mightily by God, to bring phenomenal growth, innovation and expansion to the church, in fulfillment of the covenant the founder had with the Almighty God."
 msgstr "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.O) has been used mightily by God, to bring phenomenal growth, innovation and expansion to the church, in fulfillment of the covenant the founder had with the Almighty God."
 
-#: src/pages/index.tsx:116
+#: src/pages/index.tsx:115
 msgid "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
 msgstr "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
 
@@ -399,11 +403,15 @@ msgstr "understanding of what makes our church unique and why we're passionate a
 msgid "Upcoming Events"
 msgstr "Upcoming Events"
 
-#: src/components/Countdown.tsx:161
-msgid "Watch Rebroadcast"
-msgstr "Watch Rebroadcast"
+#: src/components/Countdown.tsx:191
+msgid "Watch all on YouTube →"
+msgstr "Watch all on YouTube →"
 
-#: src/components/Countdown.tsx:122
+#: src/components/Countdown.tsx:171
+msgid "Watch our most recent services and messages"
+msgstr "Watch our most recent services and messages"
+
+#: src/components/Countdown.tsx:226
 msgid "We are live!"
 msgstr "We are live!"
 
@@ -415,10 +423,6 @@ msgstr ""
 "We invite you to join us for a special celebration of the\n"
 "resurrection of Jesus Christ, and to discover the hope that"
 
-#: src/components/Countdown.tsx:127
-msgid "We will be live in:"
-msgstr "We will be live in:"
-
 #: src/components/layout/AppFooter.tsx:140
 msgid "Wednesdays"
 msgstr "Wednesdays"
@@ -427,7 +431,7 @@ msgstr "Wednesdays"
 msgid "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
 msgstr "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
 
-#: src/pages/index.tsx:127
+#: src/pages/index.tsx:126
 msgid "Welcome to RCCG Prague"
 msgstr "Welcome to RCCG Prague"
 

@@ -180,7 +180,9 @@ const RecentVideos = ({ videos }: { videos: YTVideo[] }) => {
             <div className="video-info">
               <p>{video.title}</p>
               <span>
-                {format(new Date(video.publishedAt), "dd MMM yyyy")}
+                {video.publishedAt
+                  ? format(new Date(video.publishedAt), "dd MMM yyyy")
+                  : ""}
               </span>
             </div>
           </VideoCard>

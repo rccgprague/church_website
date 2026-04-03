@@ -32,7 +32,14 @@ export default async function handler(
     url.searchParams.set("key", API_KEY!);
 
     const ytRes = await fetch(url.toString());
-    if (!ytRes.ok) throw new Error("YouTube request failed");
+    if (!ytRes.ok) {
+      const errBody = await ytRes.text();
+      return res.status(502).json({
+        error: "YouTube request failed",
+        status: ytRes.status,
+        detail: errBody,
+      });
+    }
     const data = await ytRes.json();
 
     const videos: YTVideo[] = (data.items ?? []).map((item: any) => ({
@@ -48,7 +55,7 @@ export default async function handler(
     _cache = { data: videos, ts: Date.now() };
     res.setHeader("Cache-Control", "s-maxage=7200, stale-while-revalidate=300");
     return res.json(videos);
-  } catch {
-    return res.status(500).json({ error: "Failed to fetch YouTube videos" });
+  } catch (err) {
+    return res.status(500).json({ error: "Failed to fetch YouTube videos", detail: String(err) });
   }
 }
