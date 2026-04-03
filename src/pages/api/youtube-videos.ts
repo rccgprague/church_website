@@ -22,31 +22,44 @@ export default async function handler(
     return res.json(_cache.data);
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${req.headers.host}`;
+  const headers = { Referer: siteUrl };
+
   try {
-    const url = new URL("https://www.googleapis.com/youtube/v3/search");
-    url.searchParams.set("part", "snippet");
-    url.searchParams.set("channelId", CHANNEL_ID!);
-    url.searchParams.set("type", "video");
-    url.searchParams.set("order", "date");
-    url.searchParams.set("maxResults", "6");
-    url.searchParams.set("key", API_KEY!);
+    // Step 1: get the channel's uploads playlist ID (1 quota unit)
+    const channelUrl = new URL("https://www.googleapis.com/youtube/v3/channels");
+    channelUrl.searchParams.set("part", "contentDetails");
+    channelUrl.searchParams.set("id", CHANNEL_ID!);
+    channelUrl.searchParams.set("key", API_KEY!);
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${req.headers.host}`;
-    const ytRes = await fetch(url.toString(), {
-      headers: { Referer: siteUrl },
-    });
-    if (!ytRes.ok) {
-      const errBody = await ytRes.text();
-      return res.status(502).json({
-        error: "YouTube request failed",
-        status: ytRes.status,
-        detail: errBody,
-      });
+    const channelRes = await fetch(channelUrl.toString(), { headers });
+    if (!channelRes.ok) {
+      const detail = await channelRes.text();
+      return res.status(502).json({ error: "Failed to fetch channel details", status: channelRes.status, detail });
     }
-    const data = await ytRes.json();
+    const channelData = await channelRes.json();
+    const uploadsPlaylistId: string =
+      channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+    if (!uploadsPlaylistId) {
+      return res.status(502).json({ error: "Could not find uploads playlist for channel" });
+    }
 
-    const videos: YTVideo[] = (data.items ?? []).map((item: any) => ({
-      videoId: item.id.videoId,
+    // Step 2: fetch the 6 most recent uploads from the playlist (1 quota unit)
+    const playlistUrl = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
+    playlistUrl.searchParams.set("part", "snippet");
+    playlistUrl.searchParams.set("playlistId", uploadsPlaylistId);
+    playlistUrl.searchParams.set("maxResults", "6");
+    playlistUrl.searchParams.set("key", API_KEY!);
+
+    const playlistRes = await fetch(playlistUrl.toString(), { headers });
+    if (!playlistRes.ok) {
+      const detail = await playlistRes.text();
+      return res.status(502).json({ error: "Failed to fetch playlist items", status: playlistRes.status, detail });
+    }
+    const playlistData = await playlistRes.json();
+
+    const videos: YTVideo[] = (playlistData.items ?? []).map((item: any) => ({
+      videoId: item.snippet.resourceId.videoId,
       title: item.snippet.title,
       thumbnail:
         item.snippet.thumbnails.medium?.url ??

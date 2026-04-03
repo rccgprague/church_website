@@ -18,22 +18,26 @@ const StyledCountdown = styled.div`
   background-color: ${Colors.dark};
   padding-bottom: 120px;
 
-  .live-col {
-    position: relative;
-    padding: 40px 40px 80px;
-    background-color: ${Colors.dark};
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+  .cta-col {
+    padding: 60px 40px 80px;
   }
 
   @media (max-width: 576px) {
-    .live-col {
-      padding: 28px 20px 52px;
+    .cta-col {
+      padding: 40px 20px 60px;
     }
   }
 `;
 
 const StyledLiveCTA = styled(StyledOrangeButton)`
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+`;
+
+const StyledCTA = styled(StyledOrangeButton)`
   position: absolute;
   bottom: -30px;
   right: 0;
@@ -56,11 +60,7 @@ const LiveDot = styled.span`
   }
 `;
 
-/* ── Recent videos (not-live state) ── */
-
-const StyledVideosSection = styled.div`
-  padding: 40px 0 0;
-`;
+/* ── Video grid (shown inside modal) ── */
 
 const VideoGrid = styled.div`
   display: grid;
@@ -152,24 +152,17 @@ const LiveYoutubeIframe = ({ youtubeId }: { youtubeId: string }) => (
   />
 );
 
-const RecentVideos = ({ videos }: { videos: YTVideo[] }) => {
-  const { setIsShow, setBody } = React.useContext(ModalContext);
+const RecentVideosModal = ({ videos }: { videos: YTVideo[] }) => {
+  const { setBody } = React.useContext(ModalContext);
 
   const handleVideoClick = (videoId: string) => {
-    setIsShow(true);
     setBody(<LiveYoutubeIframe youtubeId={videoId} />);
   };
 
   const CHANNEL_URL = `https://www.youtube.com/channel/${process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID}`;
 
   return (
-    <StyledVideosSection>
-      <Headings as="h2" className="text-center text-white">
-        {t`Latest Sermons`}
-      </Headings>
-      <p className="text-center text-white mb-0">
-        {t`Watch our most recent services and messages`}
-      </p>
+    <div>
       <VideoGrid>
         {videos.map((video) => (
           <VideoCard
@@ -193,7 +186,7 @@ const RecentVideos = ({ videos }: { videos: YTVideo[] }) => {
           {t`Watch all on YouTube →`}
         </WatchAllLink>
       </div>
-    </StyledVideosSection>
+    </div>
   );
 };
 
@@ -205,40 +198,54 @@ interface ICountdownProps {
 
 const Countdown: React.FunctionComponent<ICountdownProps> = ({ theme }) => {
   const { data: liveData, isLoading: isLoadingLive } = useGetLiveDetails();
-  const { data: videos = [], isLoading: isLoadingVideos } = useGetRecentVideos();
+  const { data: videos = [] } = useGetRecentVideos();
   const { setIsShow, setBody } = React.useContext(ModalContext);
 
   const isLive = liveData?.isLive ?? false;
-  const isLoading = isLoadingLive || (!isLive && isLoadingVideos);
 
   const handleJoinLive = () => {
     setIsShow(true);
     setBody(<LiveYoutubeIframe youtubeId={liveData?.youtubeId ?? ""} />);
   };
 
+  const handleWatchLatest = () => {
+    setIsShow(true);
+    setBody(<RecentVideosModal videos={videos} />);
+  };
+
   return (
-    <Loader isLoading={isLoading}>
+    <Loader isLoading={isLoadingLive}>
       <StyledCountdown>
         <Container className="px-5">
           <Row className="align-items-center">
-            {isLive ? (
-              <Col md={{ span: 8, offset: 2 }} className="live-col">
-                <Headings as="h2" className="text-center text-white">
-                  <LiveDot />
-                  {t`We are live!`}
-                </Headings>
-                <p className="text-center text-white m-0">
-                  {t`Click on the button below to join our live event`}
-                </p>
-                <StyledLiveCTA onClick={handleJoinLive}>
-                  {t`Join live event`}
-                </StyledLiveCTA>
-              </Col>
-            ) : (
-              <Col xs={12}>
-                <RecentVideos videos={videos} />
-              </Col>
-            )}
+            <Col md={{ span: 8, offset: 2 }} className="cta-col text-center" style={{ position: "relative" }}>
+              {isLive ? (
+                <>
+                  <Headings as="h2" className="text-center text-white">
+                    <LiveDot />
+                    {t`We are live!`}
+                  </Headings>
+                  <p className="text-center text-white m-0">
+                    {t`Click on the button below to join our live event`}
+                  </p>
+                  <StyledLiveCTA onClick={handleJoinLive}>
+                    {t`Join live event`}
+                  </StyledLiveCTA>
+                </>
+              ) : (
+                <>
+                  <Headings as="h2" className="text-center text-white">
+                    {t`Latest Sermons`}
+                  </Headings>
+                  <p className="text-center text-white m-0">
+                    {t`Watch our most recent services and messages`}
+                  </p>
+                  <StyledCTA onClick={handleWatchLatest}>
+                    {t`Watch Latest Sermons`}
+                  </StyledCTA>
+                </>
+              )}
+            </Col>
           </Row>
           <Theme
             imageUrl={theme.imageUrl}
