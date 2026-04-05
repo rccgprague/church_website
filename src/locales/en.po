@@ -66,7 +66,7 @@ msgstr "Celebrate with Us: Upcoming Events at Covenant parish prague."
 msgid "Celebration Service"
 msgstr "Celebration Service"
 
-#: src/components/Countdown.tsx:229
+#: src/components/Countdown.tsx:224
 msgid "Click on the button below to join our live event"
 msgstr "Click on the button below to join our live event"
 
@@ -179,7 +179,7 @@ msgstr "It is my sincere desire to have you engage with us on this platform to e
 msgid "Join Event"
 msgstr "Join Event"
 
-#: src/components/Countdown.tsx:232
+#: src/components/Countdown.tsx:227
 msgid "Join live event"
 msgstr "Join live event"
 
@@ -187,7 +187,7 @@ msgstr "Join live event"
 msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 msgstr "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 
-#: src/components/Countdown.tsx:238
+#: src/components/Countdown.tsx:233
 msgid "Latest Sermons"
 msgstr "Latest Sermons"
 
@@ -403,19 +403,19 @@ msgstr "understanding of what makes our church unique and why we're passionate a
 msgid "Upcoming Events"
 msgstr "Upcoming Events"
 
-#: src/components/Countdown.tsx:186
+#: src/components/Countdown.tsx:181
 msgid "Watch all on YouTube →"
 msgstr "Watch all on YouTube →"
 
-#: src/components/Countdown.tsx:244
+#: src/components/Countdown.tsx:239
 msgid "Watch Latest Sermons"
 msgstr "Watch Latest Sermons"
 
-#: src/components/Countdown.tsx:241
+#: src/components/Countdown.tsx:236
 msgid "Watch our most recent services and messages"
 msgstr "Watch our most recent services and messages"
 
-#: src/components/Countdown.tsx:226
+#: src/components/Countdown.tsx:221
 msgid "We are live!"
 msgstr "We are live!"
 
