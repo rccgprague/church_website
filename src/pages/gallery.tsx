@@ -30,6 +30,16 @@ export default function GalleryPage() {
           name="keywords"
           content={t`RCCG, Prague, Covenant, Parish, Church, Gallery`}
         />
+        <meta property="og:title" content={t`RCCG Prague - Gallery`} />
+        <meta property="og:description" content={t`Photos from our RCCG Prague Covenant Parish community — worship, events, and fellowship.`} />
+        <meta property="og:image" content="https://rccgprague.com/images/logo-img.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rccgprague.com/gallery" />
+        <meta property="og:site_name" content="RCCG Prague - Covenant Parish" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t`RCCG Prague - Gallery`} />
+        <meta name="twitter:description" content={t`Photos from our RCCG Prague Covenant Parish community — worship, events, and fellowship.`} />
+        <meta name="twitter:image" content="https://rccgprague.com/images/logo-img.png" />
       </Head>
       <PageHero
         title={t`A Photo Gallery of Our Church Community`}

@@ -27,6 +27,16 @@ export default function EventsPage() {
         <title>{t`RCCG Prague - Our Events`}</title>
         <meta name="description" content={t`RCCG Prague, our church events`} />
         <meta name="keywords" content={t`RCCG, Prague, Events, Church`} />
+        <meta property="og:title" content={t`RCCG Prague - Our Events`} />
+        <meta property="og:description" content={t`Upcoming events at RCCG Prague Covenant Parish. Join us for worship, fellowship, and community.`} />
+        <meta property="og:image" content="https://rccgprague.com/images/logo-img.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rccgprague.com/events" />
+        <meta property="og:site_name" content="RCCG Prague - Covenant Parish" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t`RCCG Prague - Our Events`} />
+        <meta name="twitter:description" content={t`Upcoming events at RCCG Prague Covenant Parish. Join us for worship, fellowship, and community.`} />
+        <meta name="twitter:image" content="https://rccgprague.com/images/logo-img.png" />
       </Head>
       <EventsHero />
       <EventsInfo />
