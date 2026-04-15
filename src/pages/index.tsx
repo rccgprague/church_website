@@ -118,6 +118,22 @@ export default function Home({
           name="keywords"
           content={`RCCG, Prague, Church, Covenant, Parish`}
         />
+        <meta property="og:title" content={t`RCCG Prague - Covenant Parish`} />
+        <meta
+          property="og:description"
+          content={t`The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic.`}
+        />
+        <meta property="og:image" content="https://rccgprague.com/images/logo-img.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rccgprague.com" />
+        <meta property="og:site_name" content="RCCG Prague - Covenant Parish" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t`RCCG Prague - Covenant Parish`} />
+        <meta
+          name="twitter:description"
+          content={t`The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic.`}
+        />
+        <meta name="twitter:image" content="https://rccgprague.com/images/logo-img.png" />
       </Head>
       <Loader isLoading={isLoading}>
         <Container fluid className="px-0">

@@ -33,6 +33,16 @@ export default function About() {
           name="keywords"
           content={t`RCCG, Prague, Digital, Library, Church, blog, news`}
         />
+        <meta property="og:title" content={t`RCCG Prague - Digital Library`} />
+        <meta property="og:description" content={t`Inspiring articles and blog posts from RCCG Prague Covenant Parish.`} />
+        <meta property="og:image" content="https://rccgprague.com/images/logo-img.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rccgprague.com/blog" />
+        <meta property="og:site_name" content="RCCG Prague - Covenant Parish" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t`RCCG Prague - Digital Library`} />
+        <meta name="twitter:description" content={t`Inspiring articles and blog posts from RCCG Prague Covenant Parish.`} />
+        <meta name="twitter:image" content="https://rccgprague.com/images/logo-img.png" />
       </Head>
       <PageHero
         title={t`Inspiring Thoughts: A Collection of Our Church's Blog Posts`}

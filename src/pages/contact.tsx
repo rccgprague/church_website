@@ -33,6 +33,16 @@ export default function About() {
           name="keywords"
           content={t`RCCG, Prague, Covenant, Church, contact`}
         />
+        <meta property="og:title" content={t`RCCG Prague - Contact us`} />
+        <meta property="og:description" content={t`Get in touch with RCCG Prague Covenant Parish. We'd love to hear from you.`} />
+        <meta property="og:image" content="https://rccgprague.com/images/logo-img.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rccgprague.com/contact" />
+        <meta property="og:site_name" content="RCCG Prague - Covenant Parish" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t`RCCG Prague - Contact us`} />
+        <meta name="twitter:description" content={t`Get in touch with RCCG Prague Covenant Parish. We'd love to hear from you.`} />
+        <meta name="twitter:image" content="https://rccgprague.com/images/logo-img.png" />
       </Head>
 
       <PageHero
