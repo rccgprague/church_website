@@ -111,6 +111,7 @@ export default function RegisterPage() {
               </p>
             </div>
             <SignUp
+              routing="hash"
               fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
               appearance={{
                 elements: {
