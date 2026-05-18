@@ -132,6 +132,9 @@ const AppHeader = () => {
             <Nav.Link as={Link} href="/contact">
               {t`Contacts`}
             </Nav.Link>
+            <Nav.Link as={Link} href="/community">
+              {t`Community`}
+            </Nav.Link>
             {isCs && (
               <Nav.Link
                 onClick={() => handleLanguageSwitch("en")}
