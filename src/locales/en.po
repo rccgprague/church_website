@@ -70,6 +70,10 @@ msgstr "Celebration Service"
 msgid "Click on the button below to join our live event"
 msgstr "Click on the button below to join our live event"
 
+#: src/components/layout/AppHeader.tsx:136
+msgid "Community"
+msgstr "Community"
+
 #: src/components/events/EventsHero.tsx:10
 msgid "Community Gatherings: Meet new friends and connect with old ones at our community gatherings."
 msgstr "Community Gatherings: Meet new friends and connect with old ones at our community gatherings."

@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { Container, Form, Button, Alert, Card } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { SignIn, useUser } from "@clerk/nextjs";
+import { SignUp, useUser } from "@clerk/nextjs";
 import styled from "@emotion/styled";
 import axios from "axios";
 import Colors from "@/src/theme/color";
@@ -107,10 +107,10 @@ export default function RegisterPage() {
                 Join the Community
               </h2>
               <p style={{ color: Colors.grey }}>
-                Sign in or create an account to register.
+                Create an account to register.
               </p>
             </div>
-            <SignIn
+            <SignUp
               fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
               appearance={{
                 elements: {
