@@ -1,3 +1,4 @@
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import type { AppProps } from "next/app";
@@ -11,6 +12,9 @@ import ModalProviver from "../context/ModalContext";
 import { GetServerSideProps } from "next";
 import { getFooterContent } from "../sanity/requests/footer";
 import { FooterResponse } from "../types/footer";
+import { ClerkProvider as _ClerkProvider } from "@clerk/nextjs";
+// Cast needed for Next.js Pages Router + Clerk v7 TS compat
+const ClerkProvider = _ClerkProvider as unknown as React.FC<{ children: React.ReactNode }>;
 
 // Create react query client
 const queryClient = new QueryClient();
@@ -28,16 +32,18 @@ export default function App({
 }: ExtendedAppProps) {
   useLinguiInit(pageProps.translation);
   return (
-    <QueryClientProvider client={queryClient}>
-      <I18nProvider i18n={i18n}>
-        <ModalProviver>
-          <AppLayout initialFooter={initialFooter} locale={serverLocale}>
-            <GlobalStyles />
-            <Component {...pageProps} />
-          </AppLayout>
-        </ModalProviver>
-      </I18nProvider>
-    </QueryClientProvider>
+    <ClerkProvider>
+      <QueryClientProvider client={queryClient}>
+        <I18nProvider i18n={i18n}>
+          <ModalProviver>
+            <AppLayout initialFooter={initialFooter} locale={serverLocale}>
+              <GlobalStyles />
+              <Component {...pageProps} />
+            </AppLayout>
+          </ModalProviver>
+        </I18nProvider>
+      </QueryClientProvider>
+    </ClerkProvider>
   );
 }
 
