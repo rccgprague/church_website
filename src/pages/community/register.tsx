@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { Container, Form, Button, Alert, Card } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { SignUp, useUser } from "@clerk/nextjs";
+import { SignUp, SignIn, useUser } from "@clerk/nextjs";
 import styled from "@emotion/styled";
 import axios from "axios";
 import Colors from "@/src/theme/color";
@@ -93,6 +93,7 @@ export default function RegisterPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
 
   if (!isLoaded) return null;
 
@@ -104,21 +105,42 @@ export default function RegisterPage() {
           <div style={{ maxWidth: 480, margin: "0 auto" }}>
             <div className="text-center mb-4">
               <h2 style={{ fontWeight: 700, color: Colors.dark }}>
-                Join the Community
+                {showSignIn ? "Sign In" : "Join the Community"}
               </h2>
               <p style={{ color: Colors.grey }}>
-                Create an account to register.
+                {showSignIn
+                  ? "Sign in to continue to your community registration."
+                  : "Create an account to register."}
               </p>
+              <button
+                onClick={() => setShowSignIn((v) => !v)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: Colors.blue,
+                  cursor: "pointer",
+                  fontSize: "0.875rem",
+                  textDecoration: "underline",
+                }}
+              >
+                {showSignIn
+                  ? "New here? Create an account"
+                  : "Already have an account? Sign in"}
+              </button>
             </div>
-            <SignUp
-              routing="hash"
-              fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
-              appearance={{
-                elements: {
-                  card: { boxShadow: "none", border: "none" },
-                },
-              }}
-            />
+            {showSignIn ? (
+              <SignIn
+                routing="hash"
+                fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
+                appearance={{ elements: { card: { boxShadow: "none", border: "none" } } }}
+              />
+            ) : (
+              <SignUp
+                routing="hash"
+                fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
+                appearance={{ elements: { card: { boxShadow: "none", border: "none" } } }}
+              />
+            )}
           </div>
         </Container>
       </PageWrapper>
