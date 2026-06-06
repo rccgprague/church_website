@@ -92,6 +92,10 @@ export default function DashboardPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [inviteEmail, setInviteEmail] = useState("");
+  const [inviteLink, setInviteLink] = useState("");
+  const [inviting, setInviting] = useState(false);
+  const [inviteCopied, setInviteCopied] = useState(false);
 
   useEffect(() => {
     if (!isLoaded || !user) return;
@@ -160,6 +164,26 @@ export default function DashboardPage() {
     if (!confirm("Remove this business listing?")) return;
     await axios.delete(`/api/community/businesses/${id}`);
     loadData();
+  };
+
+  const handleInvite = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setInviting(true);
+    setInviteLink("");
+    try {
+      const { data } = await axios.post("/api/community/invites", { email: inviteEmail || undefined });
+      const url = `${window.location.origin}/community/register?token=${data.invite.token}`;
+      setInviteLink(url);
+      setInviteEmail("");
+    } finally {
+      setInviting(false);
+    }
+  };
+
+  const copyInviteLink = () => {
+    navigator.clipboard.writeText(inviteLink);
+    setInviteCopied(true);
+    setTimeout(() => setInviteCopied(false), 2000);
   };
 
   if (!isLoaded) return null;
@@ -315,6 +339,65 @@ export default function DashboardPage() {
                   )}
                 </Card.Body>
               </SectionCard>
+
+              {/* Invite a Member */}
+              {member?.status === "approved" && (
+                <SectionCard>
+                  <Card.Body>
+                    <h3 style={{ marginBottom: 4 }}>Invite a Member</h3>
+                    <p style={{ color: Colors.grey, fontSize: "0.9rem", marginBottom: 20 }}>
+                      Generate a one-time invite link to share with someone
+                      you&apos;d like to welcome into the community.
+                    </p>
+                    <Form onSubmit={handleInvite}>
+                      <Row className="g-2 align-items-end">
+                        <Col md={7}>
+                          <Form.Group>
+                            <Form.Label style={{ fontSize: "0.9rem" }}>
+                              Pre-fill their email (optional)
+                            </Form.Label>
+                            <Form.Control
+                              type="email"
+                              value={inviteEmail}
+                              onChange={(e) => setInviteEmail(e.target.value)}
+                              placeholder="friend@example.com"
+                            />
+                          </Form.Group>
+                        </Col>
+                        <Col md="auto">
+                          <ActionButton type="submit" disabled={inviting}>
+                            {inviting ? "Generating..." : "Generate Link"}
+                          </ActionButton>
+                        </Col>
+                      </Row>
+                    </Form>
+
+                    {inviteLink && (
+                      <div style={{ marginTop: 16 }}>
+                        <div
+                          onClick={copyInviteLink}
+                          style={{
+                            background: "#f0f7ff",
+                            border: "1px solid #bbdefb",
+                            borderRadius: 8,
+                            padding: "12px 16px",
+                            fontFamily: "monospace",
+                            fontSize: "0.85rem",
+                            wordBreak: "break-all",
+                            cursor: "pointer",
+                            userSelect: "all",
+                          }}
+                        >
+                          {inviteLink}
+                        </div>
+                        <small style={{ color: Colors.grey, marginTop: 6, display: "block" }}>
+                          {inviteCopied ? "✓ Copied!" : "Click to copy"} · Single use · Expires in 7 days
+                        </small>
+                      </div>
+                    )}
+                  </Card.Body>
+                </SectionCard>
+              )}
             </Col>
           </Row>
         </Container>

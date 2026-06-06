@@ -51,7 +51,7 @@ export const BUSINESS_CATEGORIES = [
   "Education & Tutoring",
   "Finance & Accounting",
   "Legal Services",
-  "Beauty & Grooming",
+  "Beauty, Fashion & Grooming",
   "Transport & Logistics",
   "Retail & Shopping",
   "Creative & Media",
