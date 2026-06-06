@@ -11,6 +11,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/router";
 import { t } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
+import { useUser, UserButton } from "@clerk/nextjs";
 
 const StyledNavbar = styled(Navbar)<{ ishome: "true" | "false" }>`
   width: 100%;
@@ -64,6 +65,7 @@ const StyledNavbar = styled(Navbar)<{ ishome: "true" | "false" }>`
 const AppHeader = () => {
   const [isHome, setIsHome] = useState(false);
   const router = useRouter();
+  const { isSignedIn } = useUser();
 
   /**
    * This hook is needed to subscribe your
@@ -149,6 +151,11 @@ const AppHeader = () => {
                 className="flag-icon"
               >
                 🇨🇿
+              </Nav.Link>
+            )}
+            {isSignedIn && (
+              <Nav.Link as="div" style={{ display: "flex", alignItems: "center" }}>
+                <UserButton afterSignOutUrl="/community" />
               </Nav.Link>
             )}
             {/* TODO: Search functionality */}
