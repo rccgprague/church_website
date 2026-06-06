@@ -82,6 +82,7 @@ export default function AdminPage() {
   const { user, isLoaded } = useUser();
   const [member, setMember] = useState<CommunityMember | null>(null);
   const [forbidden, setForbidden] = useState(false);
+  const [loadError, setLoadError] = useState("");
   const [members, setMembers] = useState<CommunityMember[]>([]);
   const [invites, setInvites] = useState<CommunityInvite[]>([]);
   const [pendingBusinesses, setPendingBusinesses] = useState<any[]>([]);
@@ -108,8 +109,12 @@ export default function AdminPage() {
       fetchMembers();
       fetchInvites();
       fetchPendingBusinesses();
-    } catch {
-      setForbidden(true);
+    } catch (err: any) {
+      if (err.response?.status === 403 || err.response?.status === 401) {
+        setForbidden(true);
+      } else {
+        setLoadError(err.response?.data?.error || err.message || "Failed to load admin panel");
+      }
     }
   };
 
@@ -173,6 +178,18 @@ export default function AdminPage() {
   const allMembers = members;
 
   if (!isLoaded) return null;
+
+  if (loadError) {
+    return (
+      <PageWrapper>
+        <Container style={{ maxWidth: 480 }}>
+          <Alert variant="danger">
+            <strong>Error loading admin panel:</strong> {loadError}
+          </Alert>
+        </Container>
+      </PageWrapper>
+    );
+  }
 
   if (forbidden) {
     return (

@@ -13,6 +13,21 @@ export default async function handler(
   if (req.method === "GET") {
     const { search, category, pending } = req.query;
 
+    // Member viewing their own listings (including inactive)
+    if (req.query.mine === "true") {
+      if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+      const [member] = await sql(
+        "SELECT id FROM community_members WHERE clerk_user_id = $1",
+        [userId]
+      );
+      if (!member) return res.status(403).json({ error: "Not a member" });
+      const businesses = await sql(
+        "SELECT * FROM community_businesses WHERE owner_id = $1 ORDER BY created_at DESC",
+        [member.id]
+      );
+      return res.status(200).json({ businesses });
+    }
+
     if (pending === "true") {
       if (!userId) return res.status(401).json({ error: "Unauthenticated" });
       const [admin] = await sql(

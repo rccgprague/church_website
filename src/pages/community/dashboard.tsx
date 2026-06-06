@@ -7,6 +7,7 @@ import {
 import { useUser } from "@clerk/nextjs";
 import styled from "@emotion/styled";
 import axios from "axios";
+import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { loadCatalog } from "@/src/utils/lingui";
 import Colors from "@/src/theme/color";
@@ -103,14 +104,8 @@ export default function DashboardPage() {
       setMember(data.member);
 
       if (data.member.status === "approved") {
-        const biz = await axios.get(
-          `/api/community/businesses?owner=${data.member.id}`
-        );
-        // Filter to own businesses client-side (the API returns all; we filter here)
-        // For a proper implementation, the API would accept ?owner= param
-        setBusinesses(biz.data.businesses.filter(
-          (b: CommunityBusiness) => b.owner_id === data.member.id
-        ));
+        const biz = await axios.get("/api/community/businesses?mine=true");
+        setBusinesses(biz.data.businesses);
       }
     } catch (err: any) {
       if (err.response?.status === 404) setNotRegistered(true);
@@ -216,6 +211,26 @@ export default function DashboardPage() {
                           Your membership is pending admin approval. You will be
                           notified once approved.
                         </p>
+                      )}
+                      {member.role === "admin" && (
+                        <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid #eee" }}>
+                          <Link
+                            href="/community/admin"
+                            style={{
+                              display: "block",
+                              background: Colors.dark,
+                              color: "#fff",
+                              textAlign: "center",
+                              padding: "10px 16px",
+                              borderRadius: 8,
+                              fontWeight: 600,
+                              textDecoration: "none",
+                              fontSize: "0.9rem",
+                            }}
+                          >
+                            Admin Panel
+                          </Link>
+                        </div>
                       )}
                     </>
                   )}
