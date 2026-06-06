@@ -378,7 +378,7 @@ export default function CommunityPage({ initialBusinesses }: Props) {
       <MemberBanner>
         <p>
           Welcome, {member.full_name}!
-          <Link href="/community/dashboard">My Dashboard →</Link>
+          <Link href="/community/dashboard">Manage My Account →</Link>
         </p>
       </MemberBanner>
 

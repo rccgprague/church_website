@@ -101,7 +101,7 @@ export default function RegisterPage() {
     if (!isLoaded) return;
     if (!isSignedIn) { setCheckingMembership(false); return; }
     axios.get("/api/community/me")
-      .then(() => router.replace("/community/dashboard"))
+      .then(() => router.replace("/community"))
       .catch(() => setCheckingMembership(false));
   }, [isLoaded, isSignedIn]);
 
