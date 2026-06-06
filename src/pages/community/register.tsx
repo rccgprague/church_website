@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Form, Button, Alert, Card } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { SignUp, SignIn, useUser } from "@clerk/nextjs";
@@ -94,8 +94,18 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
+  const [checkingMembership, setCheckingMembership] = useState(true);
 
-  if (!isLoaded) return null;
+  // If already registered, send directly to dashboard
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (!isSignedIn) { setCheckingMembership(false); return; }
+    axios.get("/api/community/me")
+      .then(() => router.replace("/community/dashboard"))
+      .catch(() => setCheckingMembership(false));
+  }, [isLoaded, isSignedIn]);
+
+  if (!isLoaded || (isSignedIn && checkingMembership)) return null;
 
   // Not signed in — show Clerk sign-in embedded
   if (!isSignedIn) {

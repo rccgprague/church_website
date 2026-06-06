@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Form, InputGroup, Button, Badge, Card } from "react-bootstrap";
 import Link from "next/link";
 import styled from "@emotion/styled";
@@ -7,8 +7,9 @@ import { FaSearch, FaBriefcase, FaUsers, FaShieldAlt } from "react-icons/fa";
 import { GetServerSideProps } from "next";
 import { loadCatalog } from "@/src/utils/lingui";
 import Colors from "@/src/theme/color";
-import { CommunityBusiness, BUSINESS_CATEGORIES } from "@/src/types/community";
+import { CommunityBusiness, CommunityMember, BUSINESS_CATEGORIES } from "@/src/types/community";
 import axios from "axios";
+import { useUser } from "@clerk/nextjs";
 
 interface Props {
   initialBusinesses: CommunityBusiness[];
@@ -196,10 +197,22 @@ const JoinBanner = styled.section`
 `;
 
 export default function CommunityPage({ initialBusinesses }: Props) {
+  const { isLoaded, isSignedIn } = useUser();
+  const [member, setMember] = useState<CommunityMember | null>(null);
+  const [memberChecked, setMemberChecked] = useState(false);
   const [businesses, setBusinesses] = useState(initialBusinesses);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (!isSignedIn) { setMemberChecked(true); return; }
+    axios.get("/api/community/me")
+      .then(({ data }) => setMember(data.member))
+      .catch(() => {})
+      .finally(() => setMemberChecked(true));
+  }, [isLoaded, isSignedIn]);
 
   const fetchBusinesses = async (q: string, cat: string) => {
     setLoading(true);
@@ -347,12 +360,42 @@ export default function CommunityPage({ initialBusinesses }: Props) {
 
       <JoinBanner>
         <Container>
-          <h2>Own a business? List it here.</h2>
-          <p>
-            Register as a community member to add your business to the
-            directory and connect with fellow church members.
-          </p>
-          <Link href="/community/register">Join the Community</Link>
+          {memberChecked && isSignedIn && member ? (
+            member.status === "approved" ? (
+              <>
+                <h2>Welcome back, {member.full_name}!</h2>
+                <p>Manage your listings and connect with the community.</p>
+                <Link href="/community/dashboard">Go to My Dashboard</Link>
+              </>
+            ) : (
+              <>
+                <h2>Registration Pending</h2>
+                <p>
+                  Your membership is awaiting admin approval. You&apos;ll get
+                  access to the full directory once approved.
+                </p>
+                <Link href="/community/dashboard">View Dashboard</Link>
+              </>
+            )
+          ) : memberChecked && isSignedIn ? (
+            <>
+              <h2>Own a business? List it here.</h2>
+              <p>
+                Register as a community member to add your business to the
+                directory and connect with fellow church members.
+              </p>
+              <Link href="/community/register">Register Now</Link>
+            </>
+          ) : (
+            <>
+              <h2>Own a business? List it here.</h2>
+              <p>
+                Sign in or create an account to register as a community member
+                and list your business.
+              </p>
+              <Link href="/community/register">Join the Community</Link>
+            </>
+          )}
         </Container>
       </JoinBanner>
     </>
