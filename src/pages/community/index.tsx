@@ -230,13 +230,31 @@ const MemberBanner = styled.div`
   text-align: center;
   color: ${Colors.white};
 
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
   p { margin: 0; font-size: 0.95rem; opacity: 0.95; }
 
   a {
+    display: inline-block;
+    background: ${Colors.dark};
     color: ${Colors.white};
     font-weight: 700;
-    text-decoration: underline;
-    margin-left: 12px;
+    font-size: 0.875rem;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      background: #000;
+      color: ${Colors.white};
+    }
   }
 `;
 
@@ -376,10 +394,12 @@ export default function CommunityPage({ initialBusinesses }: Props) {
       </Head>
 
       <MemberBanner>
-        <p>
-          Welcome, {member.full_name}!
-          <Link href="/community/dashboard">Manage My Account →</Link>
-        </p>
+        <Container>
+          <div className="inner">
+            <p>Welcome back, {member.full_name}!</p>
+            <Link href="/community/dashboard">Manage My Account →</Link>
+          </div>
+        </Container>
       </MemberBanner>
 
       <HeroSection>
