@@ -83,7 +83,7 @@ const SubmitButton = styled(Button)`
 export default function RegisterPage() {
   const { user, isLoaded, isSignedIn } = useUser();
   const router = useRouter();
-  const { token } = router.query;
+  const { token, mode } = router.query;
 
   const [form, setForm] = useState({
     full_name: user?.fullName || "",
@@ -93,7 +93,7 @@ export default function RegisterPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(mode === "signin");
   const [checkingMembership, setCheckingMembership] = useState(true);
 
   // If already registered, send directly to dashboard

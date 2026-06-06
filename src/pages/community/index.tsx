@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Form, InputGroup, Button, Badge, Card } from "react-bootstrap";
+import {
+  Container, Row, Col, Form, InputGroup, Button, Badge, Card,
+} from "react-bootstrap";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { FaSearch, FaBriefcase, FaUsers, FaShieldAlt } from "react-icons/fa";
@@ -15,6 +17,7 @@ interface Props {
   initialBusinesses: CommunityBusiness[];
 }
 
+/* ─── Shared hero ─────────────────────────────────────────── */
 const HeroSection = styled.section`
   background: linear-gradient(135deg, ${Colors.dark} 0%, ${Colors.blue} 100%);
   padding: 100px 0 60px;
@@ -35,6 +38,101 @@ const HeroSection = styled.section`
   }
 `;
 
+/* ─── Landing (unauthenticated) ───────────────────────────── */
+const LandingHero = styled.section`
+  background: linear-gradient(135deg, ${Colors.dark} 0%, ${Colors.blue} 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: ${Colors.white};
+  padding: 60px 0;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+const PrimaryBtn = styled(Link)`
+  background: ${Colors.orange};
+  color: ${Colors.white};
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+
+  &:hover {
+    background: #b83d34;
+    color: ${Colors.white};
+  }
+`;
+
+const SecondaryBtn = styled(Link)`
+  background: transparent;
+  color: ${Colors.white};
+  font-weight: 600;
+  padding: 13px 36px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+
+  &:hover {
+    border-color: ${Colors.white};
+    color: ${Colors.white};
+  }
+`;
+
+/* ─── Pending state ───────────────────────────────────────── */
+const PendingWrapper = styled.div`
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${Colors.graybg};
+  text-align: center;
+  padding: 60px 0;
+
+  .box {
+    background: ${Colors.white};
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 480px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    font-weight: 700;
+    color: ${Colors.dark};
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: ${Colors.grey};
+    margin-bottom: 28px;
+  }
+`;
+
+/* ─── Directory ───────────────────────────────────────────── */
 const SearchBar = styled(InputGroup)`
   max-width: 600px;
   margin: 0 auto;
@@ -53,9 +151,7 @@ const SearchBar = styled(InputGroup)`
     border-radius: 0 8px 8px 0 !important;
     font-weight: 600;
 
-    &:hover {
-      background: #b83d34;
-    }
+    &:hover { background: #b83d34; }
   }
 `;
 
@@ -63,28 +159,25 @@ const StatsSection = styled.section`
   background: ${Colors.white};
   padding: 40px 0;
   border-bottom: 1px solid #eee;
+  text-align: center;
 
-  .stat {
-    text-align: center;
+  .stat .icon {
+    font-size: 2rem;
+    color: ${Colors.orange};
+    margin-bottom: 8px;
+  }
 
-    .icon {
-      font-size: 2rem;
-      color: ${Colors.orange};
-      margin-bottom: 8px;
-    }
+  .stat h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: ${Colors.dark};
+    margin: 0;
+  }
 
-    h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: ${Colors.dark};
-      margin: 0;
-    }
-
-    p {
-      color: ${Colors.grey};
-      margin: 0;
-      font-size: 0.9rem;
-    }
+  .stat p {
+    color: ${Colors.grey};
+    margin: 0;
+    font-size: 0.9rem;
   }
 `;
 
@@ -124,78 +217,30 @@ const BusinessCard = styled(Card)`
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
-  .card-body {
-    padding: 24px;
-  }
-
-  .category-tag {
-    font-size: 0.75rem;
-    color: ${Colors.orange};
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .business-name {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: ${Colors.dark};
-    margin: 6px 0 10px;
-  }
-
-  .description {
-    color: ${Colors.grey};
-    font-size: 0.9rem;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .owner {
-    font-size: 0.8rem;
-    color: ${Colors.smoke};
-    margin-top: 16px;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 12px;
-  }
+  .card-body { padding: 24px; }
+  .category-tag { font-size: 0.75rem; color: ${Colors.orange}; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .business-name { font-size: 1.15rem; font-weight: 700; color: ${Colors.dark}; margin: 6px 0 10px; }
+  .description { color: ${Colors.grey}; font-size: 0.9rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .owner { font-size: 0.8rem; color: ${Colors.smoke}; margin-top: 16px; border-top: 1px solid #f0f0f0; padding-top: 12px; }
 `;
 
-const JoinBanner = styled.section`
+const MemberBanner = styled.div`
   background: ${Colors.orange};
-  padding: 60px 0;
+  padding: 20px 0;
   text-align: center;
   color: ${Colors.white};
 
-  h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  p {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 28px;
-  }
+  p { margin: 0; font-size: 0.95rem; opacity: 0.95; }
 
   a {
-    background: ${Colors.white};
-    color: ${Colors.orange};
+    color: ${Colors.white};
     font-weight: 700;
-    padding: 14px 36px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1rem;
-    display: inline-block;
-
-    &:hover {
-      opacity: 0.92;
-    }
+    text-decoration: underline;
+    margin-left: 12px;
   }
 `;
 
+/* ─── Page ────────────────────────────────────────────────── */
 export default function CommunityPage({ initialBusinesses }: Props) {
   const { isLoaded, isSignedIn } = useUser();
   const [member, setMember] = useState<CommunityMember | null>(null);
@@ -238,6 +283,88 @@ export default function CommunityPage({ initialBusinesses }: Props) {
     fetchBusinesses(search, next);
   };
 
+  /* ── Loading ── */
+  if (!isLoaded || (isSignedIn && !memberChecked)) {
+    return (
+      <div style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="spinner-border" style={{ color: Colors.orange }} />
+      </div>
+    );
+  }
+
+  /* ── Unauthenticated landing ── */
+  if (!isSignedIn) {
+    return (
+      <>
+        <Head>
+          <title>Community Directory — RCCG Prague</title>
+        </Head>
+        <LandingHero>
+          <Container>
+            <h1>Community Business Directory</h1>
+            <p>
+              A members-only space to find and support businesses run by RCCG
+              Prague Covenant Parish. Sign in or join to get access.
+            </p>
+            <ButtonRow>
+              <PrimaryBtn href="/community/register?mode=signin">
+                Sign In
+              </PrimaryBtn>
+              <SecondaryBtn href="/community/register">
+                Join the Community
+              </SecondaryBtn>
+            </ButtonRow>
+          </Container>
+        </LandingHero>
+      </>
+    );
+  }
+
+  /* ── Signed in but not registered ── */
+  if (!member) {
+    return (
+      <>
+        <Head><title>Community Directory — RCCG Prague</title></Head>
+        <PendingWrapper>
+          <Container>
+            <div className="box mx-auto">
+              <div style={{ fontSize: "3rem", marginBottom: 16 }}>👋</div>
+              <h2>You&apos;re not registered yet</h2>
+              <p>
+                Register as a community member to list your business and browse
+                the full member directory.
+              </p>
+              <PrimaryBtn href="/community/register">Register Now</PrimaryBtn>
+            </div>
+          </Container>
+        </PendingWrapper>
+      </>
+    );
+  }
+
+  /* ── Registered but pending approval ── */
+  if (member.status === "pending") {
+    return (
+      <>
+        <Head><title>Community Directory — RCCG Prague</title></Head>
+        <PendingWrapper>
+          <Container>
+            <div className="box mx-auto">
+              <div style={{ fontSize: "3rem", marginBottom: 16 }}>⏳</div>
+              <h2>Registration Pending</h2>
+              <p>
+                Your membership is awaiting admin approval. You&apos;ll get full
+                access to the directory once approved.
+              </p>
+              <PrimaryBtn href="/community/dashboard">View Dashboard</PrimaryBtn>
+            </div>
+          </Container>
+        </PendingWrapper>
+      </>
+    );
+  }
+
+  /* ── Approved member — full directory ── */
   return (
     <>
       <Head>
@@ -247,6 +374,13 @@ export default function CommunityPage({ initialBusinesses }: Props) {
           content="Browse and support businesses owned by RCCG Prague Covenant Parish members."
         />
       </Head>
+
+      <MemberBanner>
+        <p>
+          Welcome, {member.full_name}!
+          <Link href="/community/dashboard">My Dashboard →</Link>
+        </p>
+      </MemberBanner>
 
       <HeroSection>
         <Container>
@@ -275,27 +409,21 @@ export default function CommunityPage({ initialBusinesses }: Props) {
           <Row className="justify-content-center g-4">
             <Col xs={6} md={3}>
               <div className="stat">
-                <div className="icon">
-                  <FaBriefcase />
-                </div>
+                <div className="icon"><FaBriefcase /></div>
                 <h3>{businesses.length}</h3>
                 <p>Businesses listed</p>
               </div>
             </Col>
             <Col xs={6} md={3}>
               <div className="stat">
-                <div className="icon">
-                  <FaUsers />
-                </div>
+                <div className="icon"><FaUsers /></div>
                 <h3>{BUSINESS_CATEGORIES.length}</h3>
                 <p>Categories</p>
               </div>
             </Col>
             <Col xs={6} md={3}>
               <div className="stat">
-                <div className="icon">
-                  <FaShieldAlt />
-                </div>
+                <div className="icon"><FaShieldAlt /></div>
                 <h3>100%</h3>
                 <p>Verified members</p>
               </div>
@@ -306,7 +434,6 @@ export default function CommunityPage({ initialBusinesses }: Props) {
 
       <DirectorySection>
         <Container>
-          {/* Category filters */}
           <div className="mb-4 text-center">
             <CategoryBadge active={activeCategory === ""} onClick={() => handleCategory("")}>
               All
@@ -357,47 +484,6 @@ export default function CommunityPage({ initialBusinesses }: Props) {
           )}
         </Container>
       </DirectorySection>
-
-      <JoinBanner>
-        <Container>
-          {memberChecked && isSignedIn && member ? (
-            member.status === "approved" ? (
-              <>
-                <h2>Welcome back, {member.full_name}!</h2>
-                <p>Manage your listings and connect with the community.</p>
-                <Link href="/community/dashboard">Go to My Dashboard</Link>
-              </>
-            ) : (
-              <>
-                <h2>Registration Pending</h2>
-                <p>
-                  Your membership is awaiting admin approval. You&apos;ll get
-                  access to the full directory once approved.
-                </p>
-                <Link href="/community/dashboard">View Dashboard</Link>
-              </>
-            )
-          ) : memberChecked && isSignedIn ? (
-            <>
-              <h2>Own a business? List it here.</h2>
-              <p>
-                Register as a community member to add your business to the
-                directory and connect with fellow church members.
-              </p>
-              <Link href="/community/register">Register Now</Link>
-            </>
-          ) : (
-            <>
-              <h2>Own a business? List it here.</h2>
-              <p>
-                Sign in or create an account to register as a community member
-                and list your business.
-              </p>
-              <Link href="/community/register">Join the Community</Link>
-            </>
-          )}
-        </Container>
-      </JoinBanner>
     </>
   );
 }
@@ -405,7 +491,6 @@ export default function CommunityPage({ initialBusinesses }: Props) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const translation = await loadCatalog(ctx.locale!);
 
-  // Fetch initial businesses server-side
   let initialBusinesses: CommunityBusiness[] = [];
   try {
     const sql = (await import("@/src/lib/db")).default;
@@ -418,7 +503,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
        LIMIT 50`
     ) as CommunityBusiness[];
   } catch {
-    // DB may not be available at build time — return empty
+    // DB not available at build time
   }
 
   return { props: { translation, initialBusinesses } };
