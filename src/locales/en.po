@@ -18,7 +18,7 @@ msgid "A Photo Gallery of Our Church Community"
 msgstr "A Photo Gallery of Our Church Community"
 
 #: src/components/layout/AppFooter.tsx:113
-#: src/components/layout/AppHeader.tsx:121
+#: src/components/layout/AppHeader.tsx:123
 msgid "About"
 msgstr "About"
 
@@ -70,7 +70,7 @@ msgstr "Celebration Service"
 msgid "Click on the button below to join our live event"
 msgstr "Click on the button below to join our live event"
 
-#: src/components/layout/AppHeader.tsx:136
+#: src/components/layout/AppHeader.tsx:138
 msgid "Community"
 msgstr "Community"
 
@@ -83,7 +83,7 @@ msgid "Contact section"
 msgstr "Contact section"
 
 #: src/components/layout/AppFooter.tsx:117
-#: src/components/layout/AppHeader.tsx:133
+#: src/components/layout/AppHeader.tsx:135
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -107,7 +107,7 @@ msgstr "Covenant parish prague Story"
 #: src/components/hero/HomeHero.tsx:323
 #: src/components/hero/HomeHero.tsx:344
 #: src/components/layout/AppFooter.tsx:116
-#: src/components/layout/AppHeader.tsx:130
+#: src/components/layout/AppHeader.tsx:132
 msgid "Digital Library"
 msgstr "Digital Library"
 
@@ -124,7 +124,7 @@ msgid "Email address"
 msgstr "Email address"
 
 #: src/components/layout/AppFooter.tsx:115
-#: src/components/layout/AppHeader.tsx:127
+#: src/components/layout/AppHeader.tsx:129
 msgid "Events"
 msgstr "Events"
 
@@ -142,7 +142,7 @@ msgid "Fridays"
 msgstr "Fridays"
 
 #: src/components/layout/AppFooter.tsx:114
-#: src/components/layout/AppHeader.tsx:124
+#: src/components/layout/AppHeader.tsx:126
 msgid "Gallery"
 msgstr "Gallery"
 
@@ -160,7 +160,7 @@ msgid "Here at our church, we understand that you may have questions about who w
 msgstr "Here at our church, we understand that you may have questions about who we are, what we believe, and how we operate."
 
 #: src/components/layout/AppFooter.tsx:112
-#: src/components/layout/AppHeader.tsx:118
+#: src/components/layout/AppHeader.tsx:120
 msgid "Home"
 msgstr "Home"
 

@@ -84,6 +84,7 @@ export default function AdminPage() {
   const [forbidden, setForbidden] = useState(false);
   const [members, setMembers] = useState<CommunityMember[]>([]);
   const [invites, setInvites] = useState<CommunityInvite[]>([]);
+  const [pendingBusinesses, setPendingBusinesses] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState("pending");
   const [newInvite, setNewInvite] = useState<CommunityInvite | null>(null);
   const [inviteEmail, setInviteEmail] = useState("");
@@ -106,6 +107,7 @@ export default function AdminPage() {
       setMember(data.member);
       fetchMembers();
       fetchInvites();
+      fetchPendingBusinesses();
     } catch {
       setForbidden(true);
     }
@@ -119,6 +121,23 @@ export default function AdminPage() {
   const fetchInvites = async () => {
     const { data } = await axios.get("/api/community/invites");
     setInvites(data.invites);
+  };
+
+  const fetchPendingBusinesses = async () => {
+    const { data } = await axios.get("/api/community/businesses?pending=true");
+    setPendingBusinesses(data.businesses);
+  };
+
+  const handleBusinessApprove = async (id: string) => {
+    await axios.put(`/api/community/businesses/${id}`, { active: true });
+    setActionSuccess("Business approved and listed in directory.");
+    fetchPendingBusinesses();
+  };
+
+  const handleBusinessReject = async (id: string) => {
+    await axios.delete(`/api/community/businesses/${id}`);
+    setActionSuccess("Business listing removed.");
+    fetchPendingBusinesses();
   };
 
   const handleMemberAction = async (id: string, status: string) => {
@@ -311,6 +330,76 @@ export default function AdminPage() {
                       ))}
                     </tbody>
                   </Table>
+                </Card.Body>
+              </SectionCard>
+            </Tab>
+
+            {/* Pending businesses */}
+            <Tab
+              eventKey="businesses"
+              title={
+                <>
+                  Business Listings{" "}
+                  {pendingBusinesses.length > 0 && (
+                    <Badge bg="warning" pill text="dark">
+                      {pendingBusinesses.length}
+                    </Badge>
+                  )}
+                </>
+              }
+            >
+              <SectionCard>
+                <Card.Body>
+                  <p style={{ color: Colors.grey, fontSize: "0.9rem", marginBottom: 20 }}>
+                    New business listings require approval before appearing in the directory.
+                  </p>
+                  {pendingBusinesses.length === 0 ? (
+                    <p style={{ color: Colors.grey }}>No businesses awaiting approval.</p>
+                  ) : (
+                    <Table responsive hover>
+                      <thead>
+                        <tr>
+                          <th>Business</th>
+                          <th>Category</th>
+                          <th>Owner</th>
+                          <th>Submitted</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pendingBusinesses.map((b) => (
+                          <tr key={b.id}>
+                            <td>
+                              <strong>{b.name}</strong>
+                              <div style={{ fontSize: "0.8rem", color: Colors.grey }}>
+                                {b.description?.slice(0, 80)}…
+                              </div>
+                            </td>
+                            <td>{b.category}</td>
+                            <td>{b.owner_name}</td>
+                            <td>{new Date(b.created_at).toLocaleDateString()}</td>
+                            <td>
+                              <Button
+                                size="sm"
+                                variant="success"
+                                className="me-2"
+                                onClick={() => handleBusinessApprove(b.id)}
+                              >
+                                Approve
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="danger"
+                                onClick={() => handleBusinessReject(b.id)}
+                              >
+                                Reject
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  )}
                 </Card.Body>
               </SectionCard>
             </Tab>

@@ -8,9 +8,29 @@ export default async function handler(
 ) {
   const { userId } = getAuth(req);
 
-  // GET — public search/list (returns only active listings to approved members or publicly)
+  // GET — list businesses
+  // Admin-only: ?pending=true returns inactive (awaiting approval) businesses
   if (req.method === "GET") {
-    const { search, category } = req.query;
+    const { search, category, pending } = req.query;
+
+    if (pending === "true") {
+      if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+      const [admin] = await sql(
+        "SELECT role FROM community_members WHERE clerk_user_id = $1",
+        [userId]
+      );
+      if (!admin || admin.role !== "admin")
+        return res.status(403).json({ error: "Admins only" });
+      const businesses = await sql(`
+        SELECT b.*, m.full_name as owner_name
+        FROM community_businesses b
+        JOIN community_members m ON b.owner_id = m.id
+        WHERE b.active = FALSE
+        ORDER BY b.created_at DESC
+      `);
+      return res.status(200).json({ businesses });
+    }
+
 
     let query = `
       SELECT b.*, m.full_name as owner_name
@@ -62,8 +82,8 @@ export default async function handler(
 
     const [business] = await sql(
       `INSERT INTO community_businesses
-         (owner_id, name, category, description, website, phone, email, location, logo_url)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+         (owner_id, name, category, description, website, phone, email, location, logo_url, active)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, FALSE)
        RETURNING *`,
       [
         member.id,

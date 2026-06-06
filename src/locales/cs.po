@@ -18,7 +18,7 @@ msgid "A Photo Gallery of Our Church Community"
 msgstr "Fotogalerie naší církevní obce"
 
 #: src/components/layout/AppFooter.tsx:113
-#: src/components/layout/AppHeader.tsx:121
+#: src/components/layout/AppHeader.tsx:123
 msgid "About"
 msgstr "O nás"
 
@@ -70,7 +70,7 @@ msgstr "Hlavní slavnostní shromáždění"
 msgid "Click on the button below to join our live event"
 msgstr "Kliknutím na tlačítko níže se připojíte k naší živé události"
 
-#: src/components/layout/AppHeader.tsx:136
+#: src/components/layout/AppHeader.tsx:138
 msgid "Community"
 msgstr "Komunita"
 
@@ -83,7 +83,7 @@ msgid "Contact section"
 msgstr "Kontaktní sekce"
 
 #: src/components/layout/AppFooter.tsx:117
-#: src/components/layout/AppHeader.tsx:133
+#: src/components/layout/AppHeader.tsx:135
 msgid "Contacts"
 msgstr "Kontakty"
 
@@ -107,7 +107,7 @@ msgstr "Smlouva farnost pražský příběh"
 #: src/components/hero/HomeHero.tsx:323
 #: src/components/hero/HomeHero.tsx:344
 #: src/components/layout/AppFooter.tsx:116
-#: src/components/layout/AppHeader.tsx:130
+#: src/components/layout/AppHeader.tsx:132
 msgid "Digital Library"
 msgstr "Digitální knihovna"
 
@@ -124,7 +124,7 @@ msgid "Email address"
 msgstr "Emailová adresa"
 
 #: src/components/layout/AppFooter.tsx:115
-#: src/components/layout/AppHeader.tsx:127
+#: src/components/layout/AppHeader.tsx:129
 msgid "Events"
 msgstr "Akce"
 
@@ -142,7 +142,7 @@ msgid "Fridays"
 msgstr "pátky"
 
 #: src/components/layout/AppFooter.tsx:114
-#: src/components/layout/AppHeader.tsx:124
+#: src/components/layout/AppHeader.tsx:126
 msgid "Gallery"
 msgstr "Galerie"
 
@@ -160,7 +160,7 @@ msgid "Here at our church, we understand that you may have questions about who w
 msgstr "Zde v našem sboru chápeme, že můžete mít otázky o tom, kdo jsme, čemu věříme a jak fungujeme"
 
 #: src/components/layout/AppFooter.tsx:112
-#: src/components/layout/AppHeader.tsx:118
+#: src/components/layout/AppHeader.tsx:120
 msgid "Home"
 msgstr "Úvod"
 
