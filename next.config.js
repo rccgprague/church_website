@@ -25,7 +25,7 @@ const nextConfig = {
   i18n: {
     locales: ["en", "cs"],
     defaultLocale: "en",
-    localeDetection: true,
+    // localeDetection removed — Next.js 15 only accepts false; omitting keeps detection enabled by default
   },
   images: {
     remotePatterns: [
