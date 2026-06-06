@@ -109,47 +109,48 @@ export default function RegisterPage() {
 
   // Not signed in — show Clerk sign-in embedded
   if (!isSignedIn) {
+    const clerkAppearance = {
+      elements: {
+        card: { boxShadow: "none", border: "none" },
+        // Hide Clerk's own header — we render our own above
+        headerTitle: { display: "none" },
+        headerSubtitle: { display: "none" },
+      },
+    };
+    const redirectUrl = `/community/register${token ? `?token=${token}` : ""}`;
     return (
       <PageWrapper>
         <Container>
-          <div style={{ maxWidth: 480, margin: "0 auto" }}>
-            <div className="text-center mb-4">
-              <h2 style={{ fontWeight: 700, color: Colors.dark }}>
-                {showSignIn ? "Sign In" : "Join the Community"}
-              </h2>
-              <p style={{ color: Colors.grey }}>
-                {showSignIn
-                  ? "Sign in to continue to your community registration."
-                  : "Create an account to register."}
-              </p>
-              <button
-                onClick={() => setShowSignIn((v) => !v)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: Colors.blue,
-                  cursor: "pointer",
-                  fontSize: "0.875rem",
-                  textDecoration: "underline",
-                }}
-              >
-                {showSignIn
-                  ? "New here? Create an account"
-                  : "Already have an account? Sign in"}
-              </button>
-            </div>
+          <div style={{ maxWidth: 480, margin: "0 auto", textAlign: "center" }}>
+            <h2 style={{ fontWeight: 700, color: Colors.dark, textAlign: "center" }}>
+              {showSignIn ? "Sign In" : "Join the Community"}
+            </h2>
+            <p style={{ color: Colors.grey, textAlign: "center", marginBottom: 8 }}>
+              {showSignIn
+                ? "Sign in to access the community directory."
+                : "Create an account to register as a member."}
+            </p>
+            <button
+              onClick={() => setShowSignIn((v) => !v)}
+              style={{
+                background: "none",
+                border: "none",
+                color: Colors.blue,
+                cursor: "pointer",
+                fontSize: "0.875rem",
+                textDecoration: "underline",
+                display: "block",
+                margin: "0 auto 24px",
+              }}
+            >
+              {showSignIn
+                ? "New here? Create an account instead"
+                : "Already have an account? Sign in"}
+            </button>
             {showSignIn ? (
-              <SignIn
-                routing="hash"
-                fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
-                appearance={{ elements: { card: { boxShadow: "none", border: "none" } } }}
-              />
+              <SignIn routing="hash" fallbackRedirectUrl={redirectUrl} appearance={clerkAppearance} />
             ) : (
-              <SignUp
-                routing="hash"
-                fallbackRedirectUrl={`/community/register${token ? `?token=${token}` : ""}`}
-                appearance={{ elements: { card: { boxShadow: "none", border: "none" } } }}
-              />
+              <SignUp routing="hash" fallbackRedirectUrl={redirectUrl} appearance={clerkAppearance} />
             )}
           </div>
         </Container>
@@ -223,8 +224,8 @@ export default function RegisterPage() {
         <Container>
           <RegisterCard>
             <Card.Body>
-              <h2>Join the Community</h2>
-              <p className="subtitle">
+              <h2 style={{ textAlign: "center" }}>Join the Community</h2>
+              <p className="subtitle" style={{ textAlign: "center" }}>
                 Register to list your business and access the full member
                 directory.
               </p>
