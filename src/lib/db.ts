@@ -7,9 +7,11 @@ if (!process.env.DATABASE_URL) {
 const _sql = neon(process.env.DATABASE_URL!);
 
 // Wrapper that accepts parameterized queries: sql("SELECT ... WHERE id = $1", [id])
-// Neon's TS types only expose the tagged template form, so we cast internally.
+// Tagged template protocol requires n+1 string parts for n params, so we split on $1/$2/…
+// before calling the neon tagged-template function.
 const sql = async (query: string, params: any[] = []): Promise<any[]> => {
-  const strings = Object.assign([query], { raw: [query] }) as unknown as TemplateStringsArray;
+  const parts = query.split(/\$\d+/);
+  const strings = Object.assign(parts, { raw: parts }) as unknown as TemplateStringsArray;
   try {
     return await (_sql(strings, ...params) as unknown as Promise<any[]>);
   } catch (err) {
