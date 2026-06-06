@@ -111,7 +111,9 @@ export default function RegisterPage() {
   if (!isSignedIn) {
     const clerkAppearance = {
       elements: {
-        card: { boxShadow: "none", border: "none" },
+        rootBox: { width: "100%" },
+        cardBox: { width: "100%", boxShadow: "none", border: "none" },
+        card: { boxShadow: "none", border: "none", margin: "0 auto", width: "100%" },
         // Hide Clerk's own header — we render our own above
         headerTitle: { display: "none" },
         headerSubtitle: { display: "none" },
