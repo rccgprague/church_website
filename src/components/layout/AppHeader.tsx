@@ -53,7 +53,7 @@ const StyledNavbar = styled(Navbar)<{ ishome: "true" | "false" }>`
           color: #ffffff !important;
         }
         .logo-img {
-          width: 140px;
+          width: 200px;
           height: auto;
         }
       }
@@ -90,16 +90,16 @@ const AppHeader = () => {
             <Image
               src={`/images/icons/logo-blue.png`}
               alt="RCCG Prague Logo"
-              width={300}
-              height={100}
+              width={450}
+              height={146}
               className="logo-img d-none d-lg-block"
               priority
             />
             <Image
-              src={"/images/icons/logo-white.svg"}
+              src={"/images/icons/logo-white.png"}
               alt="RCCG Prague Logo"
-              width={280}
-              height={90}
+              width={400}
+              height={130}
               className="logo-img d-block d-lg-none"
               priority
             />
@@ -131,6 +131,9 @@ const AppHeader = () => {
             </Nav.Link>
             <Nav.Link as={Link} href="/contact">
               {t`Contacts`}
+            </Nav.Link>
+            <Nav.Link as={Link} href="/community">
+              {t`Community`}
             </Nav.Link>
             {isCs && (
               <Nav.Link

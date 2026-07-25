@@ -110,7 +110,12 @@ const SlideBackground = styled.div<{
   background-size: cover;
   background-position: ${(p) => p.bgPosition};
   background-repeat: no-repeat;
-  min-height: 85vh;
+  /* Banner images are ultra-wide (~2.9:1). Keying height off vw as well as
+     vh keeps the container's aspect ratio closer to the image's across
+     both wide monitors and narrower laptop windows, so cover crops a
+     similar proportion of the sides everywhere instead of cropping much
+     more aggressively as the window narrows. */
+  min-height: clamp(320px, min(44vw, 75vh), 85vh);
   display: flex;
   align-items: flex-end;
   padding: 0 80px 100px;
@@ -132,7 +137,6 @@ const SlideBackground = styled.div<{
   ${mediaBreakpointDown(
     BREAKPOINTS.xl,
     css`
-      min-height: 75vh;
       padding: 0 60px 80px;
     `
   )}
@@ -140,7 +144,6 @@ const SlideBackground = styled.div<{
   ${mediaBreakpointDown(
     BREAKPOINTS.lg,
     css`
-      min-height: 65vh;
       padding: 0 40px 70px;
 
       h1 {
@@ -157,7 +160,6 @@ const SlideBackground = styled.div<{
   ${mediaBreakpointDown(
     BREAKPOINTS.md,
     css`
-      min-height: 55vh;
       padding: 0 24px 60px;
 
       h1 {
