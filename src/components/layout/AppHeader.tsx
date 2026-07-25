@@ -96,10 +96,10 @@ const AppHeader = () => {
               priority
             />
             <Image
-              src={"/images/icons/logo-white.svg"}
+              src={"/images/icons/logo-white.png"}
               alt="RCCG Prague Logo"
               width={280}
-              height={90}
+              height={91}
               className="logo-img d-block d-lg-none"
               priority
             />
