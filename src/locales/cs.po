@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/gallery.tsx:35
+#: src/pages/gallery.tsx:45
 msgid "A Photo Gallery of Our Church Community"
 msgstr "Fotogalerie naší církevní obce"
 
@@ -142,11 +142,16 @@ msgstr "pátky"
 msgid "Gallery"
 msgstr "Galerie"
 
-#: src/pages/contact.tsx:39
+#: src/pages/contact.tsx:37
+#: src/pages/contact.tsx:44
+msgid "Get in touch with RCCG Prague Covenant Parish. We'd love to hear from you."
+msgstr ""
+
+#: src/pages/contact.tsx:49
 msgid "Get in Touch: Connect with Our Church Community"
 msgstr "Kontaktujte nás: Spojte se s naší církevní komunitou"
 
-#: src/pages/blog/index.tsx:39
+#: src/pages/blog/index.tsx:49
 msgid "Here at our church, we understand that you may have questions about who we are, what we believe, and how we operate."
 msgstr "Zde v našem sboru chápeme, že můžete mít otázky o tom, kdo jsme, čemu věříme a jak fungujeme"
 
@@ -163,7 +168,12 @@ msgstr "souhlasím s"
 msgid "IBAN"
 msgstr "IBAN"
 
-#: src/pages/blog/index.tsx:38
+#: src/pages/blog/index.tsx:37
+#: src/pages/blog/index.tsx:44
+msgid "Inspiring articles and blog posts from RCCG Prague Covenant Parish."
+msgstr ""
+
+#: src/pages/blog/index.tsx:48
 msgid "Inspiring Thoughts: A Collection of Our Church's Blog Posts"
 msgstr "Inspirující myšlenky: Sbírka blogových příspěvků naší církve"
 
@@ -183,7 +193,7 @@ msgstr "Připojte se k události"
 msgid "Join live event"
 msgstr "Připojte se k živé události"
 
-#: src/pages/gallery.tsx:37
+#: src/pages/gallery.tsx:47
 msgid "Join us on this journey as we celebrate the blessings of our shared faith and relive cherished memories. May these photos inspire you and deepen your connection to our church community."
 msgstr "Připojte se k nám na této cestě, kdy oslavujeme požehnání naší společné víry a znovu prožíváme vzácné vzpomínky. Kéž vás tyto fotografie inspirují a prohloubí váš vztah k naší církevní komunitě."
 
@@ -211,7 +221,7 @@ msgstr "Kancelář"
 msgid "Online Bible"
 msgstr "Online Bible"
 
-#: src/pages/contact.tsx:40
+#: src/pages/contact.tsx:50
 msgid "Our church is dedicated to serving our community and spreading God's love, and we believe that open communication is key to fostering strong relationships."
 msgstr "Náš sbor je zasvěcen službě naší komunitě a šíření Boží lásky a věříme, že otevřená komunikace je klíčem k podpoře pevných vztahů."
 
@@ -220,7 +230,7 @@ msgstr "Náš sbor je zasvěcen službě naší komunitě a šíření Boží l�
 msgid "our events"
 msgstr "naše akce"
 
-#: src/pages/blog/index.tsx:40
+#: src/pages/blog/index.tsx:50
 msgid "Our FAQ page is designed to provide you with comprehensive answers to the most commonly asked questions about our church. Whether you're a first-time visitor or a long-time member, we hope this resource will give you a better"
 msgstr "Naše stránka FAQ je navržena tak, aby vám poskytla vyčerpávající odpovědi na nejčastěji kladené otázky o našem kostele. Ať už jste prvním návštěvníkem nebo dlouholetým členem, doufáme, že vám tento zdroj poskytne lepší"
 
@@ -244,6 +254,11 @@ msgstr "Náš tým"
 msgid "Phone"
 msgstr "Telefon"
 
+#: src/pages/gallery.tsx:34
+#: src/pages/gallery.tsx:41
+msgid "Photos from our RCCG Prague Covenant Parish community — worship, events, and fellowship."
+msgstr ""
+
 #: src/components/layout/AppFooter.tsx:267
 msgid "Prague Czech Republic | All Rights Reserved | Data Privacy"
 msgstr "PRAHA ČESKÁ REPUBLIKA | Všechna práva vyhrazena | Ochrana osobních údajů"
@@ -265,31 +280,43 @@ msgid "Quick Links"
 msgstr "Rychlé odkazy"
 
 #: src/pages/about.tsx:27
+#: src/pages/about.tsx:36
+#: src/pages/about.tsx:43
 msgid "RCCG Prague - About us"
 msgstr "RCCG Praha - O nás"
 
 #: src/pages/contact.tsx:27
+#: src/pages/contact.tsx:36
+#: src/pages/contact.tsx:43
 msgid "RCCG Prague - Contact us"
 msgstr "RCCG Praha - Kontaktujte nás"
 
 #: src/pages/index.tsx:112
+#: src/pages/index.tsx:121
+#: src/pages/index.tsx:131
 msgid "RCCG Prague - Covenant Parish"
 msgstr "RCCG Prague - Covenant Parish"
 
-#: src/pages/blog/[slug].tsx:26
+#: src/pages/blog/[slug].tsx:41
 #: src/pages/blog/index.tsx:27
+#: src/pages/blog/index.tsx:36
+#: src/pages/blog/index.tsx:43
 msgid "RCCG Prague - Digital Library"
 msgstr "RCCG Praha - Digitální knihovna"
 
-#: src/pages/events/[slug].tsx:26
+#: src/pages/events/[slug].tsx:41
 msgid "RCCG Prague - Event"
 msgstr "RCCG Praha - Akce"
 
 #: src/pages/gallery.tsx:27
+#: src/pages/gallery.tsx:33
+#: src/pages/gallery.tsx:40
 msgid "RCCG Prague - Gallery"
 msgstr "RCCG Praha - Galerie"
 
 #: src/pages/events/index.tsx:27
+#: src/pages/events/index.tsx:30
+#: src/pages/events/index.tsx:37
 msgid "RCCG Prague - Our Events"
 msgstr "RCCG Praha - Naše akce"
 
@@ -297,7 +324,7 @@ msgstr "RCCG Praha - Naše akce"
 msgid "RCCG Prague, get in touch with us"
 msgstr "RCCG Praha, kontaktujte nás"
 
-#: src/pages/events/[slug].tsx:27
+#: src/pages/events/[slug].tsx:44
 msgid "RCCG Prague, our church event"
 msgstr "RCCG Praha, naše církevní akce"
 
@@ -305,7 +332,7 @@ msgstr "RCCG Praha, naše církevní akce"
 msgid "RCCG Prague, our church events"
 msgstr "RCCG Praha, naše církevní akce"
 
-#: src/pages/blog/[slug].tsx:29
+#: src/pages/blog/[slug].tsx:44
 #: src/pages/blog/index.tsx:30
 msgid "RCCG Prague, our digital library"
 msgstr "RCCG Praha, naše digitální knihovna"
@@ -322,12 +349,12 @@ msgstr "RCCG, Praha, Covenant, Church, kontakt"
 msgid "RCCG, Prague, Covenant, Parish, Church, Gallery"
 msgstr "RCCG, Praha, Covenant, Farnost, Kostel, Galerie"
 
-#: src/pages/blog/[slug].tsx:33
+#: src/pages/blog/[slug].tsx:55
 #: src/pages/blog/index.tsx:34
 msgid "RCCG, Prague, Digital, Library, Church, blog, news"
 msgstr "RCCG, Praha, Digital, Knihovna, Kostel, blog, novinky"
 
-#: src/pages/events/[slug].tsx:28
+#: src/pages/events/[slug].tsx:53
 msgid "RCCG, Prague, Event, Church"
 msgstr "RCCG, Praha, Akce, Kostel"
 
@@ -367,7 +394,7 @@ msgstr "Podmínky použití"
 msgid "Testimonials"
 msgstr "Posudky"
 
-#: src/pages/contact.tsx:41
+#: src/pages/contact.tsx:51
 msgid "That's why we've created this contact page to make it easy for you to connect with us. Whether you have a question, a suggestion, or just want to say hello, we're here to listen."
 msgstr "Proto jsme vytvořili tuto kontaktní stránku, abychom vám usnadnili spojení s námi. Ať už máte dotaz, návrh nebo jen chcete pozdravit, jsme tu, abychom vám naslouchali."
 
@@ -379,7 +406,7 @@ msgstr "Covenant Parish je součástí Redeemed Christian Church of God (RCCG) W
 msgid "The Covenant Parish is the headquarter Church of The Redeemed Christian Church of God (RCCG) in Prague, Czech Republic."
 msgstr "Covenant Parish je ústředím církve The Redeemed Christian Church of God (RCCG) v Praze, Česká republika."
 
-#: src/pages/index.tsx:125
+#: src/pages/index.tsx:141
 msgid "The Covenant Place"
 msgstr "Místo úmluvy"
 
@@ -388,6 +415,8 @@ msgid "The current General Overseer, Pastor E. A Adeboye (fondly called Daddy G.
 msgstr "Současného generálního dozorce, pastora E. Adeboye (s oblibou nazývaného Tatínek G.O.) Bůh mocně použil, aby přinesl církvi fenomenální růst, inovaci a expanzi, aby naplnil smlouvu, kterou zakladatel uzavřel s Všemohoucím Bohem."
 
 #: src/pages/index.tsx:115
+#: src/pages/index.tsx:124
+#: src/pages/index.tsx:134
 msgid "The RCCG Prague Covenant Parish is the headquarter Church of Redeemed Christian Church of God Prague, Czech Republic."
 msgstr "RCCG Prague Covenant Parish je hlavním sídlem Církve vykoupené křesťanské církve Boží Praha, Česká republika."
 
@@ -395,13 +424,18 @@ msgstr "RCCG Prague Covenant Parish je hlavním sídlem Církve vykoupené křes
 msgid "Type your message here"
 msgstr "zde Napište svou zprávu"
 
-#: src/pages/blog/index.tsx:41
+#: src/pages/blog/index.tsx:51
 msgid "understanding of what makes our church unique and why we're passionate about spreading God's love. Browse through the FAQs to discover more about our church and how you can get involved."
 msgstr "pochopení toho, čím je náš sbor jedinečný a proč jsme nadšení pro šíření Boží lásky. Projděte si často kladené otázky a zjistěte více o našem sboru a o tom, jak se můžete zapojit."
 
 #: src/components/UpcomingEvents.tsx:88
 msgid "Upcoming Events"
 msgstr "Připravované akce"
+
+#: src/pages/events/index.tsx:31
+#: src/pages/events/index.tsx:38
+msgid "Upcoming events at RCCG Prague Covenant Parish. Join us for worship, fellowship, and community."
+msgstr ""
 
 #: src/components/Countdown.tsx:181
 msgid "Watch all on YouTube →"
@@ -429,11 +463,11 @@ msgstr "Zveme vás, abyste se k nám připojili na zvláštní oslavu vzkříše
 msgid "Wednesdays"
 msgstr "středy"
 
-#: src/pages/gallery.tsx:36
+#: src/pages/gallery.tsx:46
 msgid "Welcome to our church's photo gallery, where we showcase the beauty and joy of our faith community in action. From vibrant worship services to heartwarming fellowship events, this gallery serves as a visual testimony to the love, hope, and unity that we experience as part of our church family."
 msgstr "Vítejte ve fotogalerii našeho sboru, kde předvádíme krásu a radost našeho společenství víry v akci. Tato galerie slouží jako vizuální svědectví o lásce, naději a jednotě, kterou zažíváme jako součást naší církevní rodiny, od živých bohoslužeb až po potěšující společenské akce."
 
-#: src/pages/index.tsx:126
+#: src/pages/index.tsx:142
 msgid "Welcome to RCCG Prague"
 msgstr "Vítejte v RCCG Praha"
 
@@ -441,7 +475,7 @@ msgstr "Vítejte v RCCG Praha"
 msgid "Who we are"
 msgstr "Kdo jsme"
 
-#: src/pages/contact.tsx:42
+#: src/pages/contact.tsx:52
 msgid "You can reach us through our contact form, email, or phone, and one of our team members will get back to you as soon as possible. We can't wait to hear from you!"
 msgstr "Můžete nás kontaktovat prostřednictvím našeho kontaktního formuláře, e-mailu nebo telefonu a jeden z členů našeho týmu se vám co nejdříve ozve. Nemůžeme se dočkat, až se ozvete!"
 

@@ -53,7 +53,7 @@ const StyledNavbar = styled(Navbar)<{ ishome: "true" | "false" }>`
           color: #ffffff !important;
         }
         .logo-img {
-          width: 140px;
+          width: 200px;
           height: auto;
         }
       }
@@ -90,16 +90,16 @@ const AppHeader = () => {
             <Image
               src={`/images/icons/logo-blue.png`}
               alt="RCCG Prague Logo"
-              width={300}
-              height={100}
+              width={450}
+              height={146}
               className="logo-img d-none d-lg-block"
               priority
             />
             <Image
               src={"/images/icons/logo-white.png"}
               alt="RCCG Prague Logo"
-              width={280}
-              height={91}
+              width={400}
+              height={130}
               className="logo-img d-block d-lg-none"
               priority
             />
