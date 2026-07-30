@@ -4,6 +4,8 @@ import * as React from "react";
 import { Col, Row, Stack } from "react-bootstrap";
 import Headings from "./typography/Headings";
 import Fonts from "../theme/fonts";
+import { BREAKPOINTS, mediaBreakpointDown } from "../theme/breakpoints";
+import { css } from "styled-components";
 
 const StyledTheme = styled.div`
   padding: 120px 0 0px;
@@ -22,9 +24,34 @@ const StyledTheme = styled.div`
 `;
 
 const StyledProfileImage = styled(Image)`
+  width: 100%;
+  height: auto;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
   object-position: top;
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.md,
+    css`
+      max-width: 220px;
+    `
+  )}
+`;
+
+const StyledLogoImage = styled(Image)`
+  width: 100%;
+  height: auto;
+  max-width: 320px;
+  object-fit: contain;
+
+  ${mediaBreakpointDown(
+    BREAKPOINTS.md,
+    css`
+      max-width: 220px;
+    `
+  )}
 `;
 
 export interface IThemeProps {
@@ -48,8 +75,8 @@ const Theme: React.FunctionComponent<IThemeProps> = ({
         <Col md={3}>
           <StyledProfileImage
             src={imageUrl ?? ""}
-            width={180}
-            height={180}
+            width={320}
+            height={320}
             alt={title ?? "Team"}
             className="align-self-center"
           />
@@ -64,11 +91,11 @@ const Theme: React.FunctionComponent<IThemeProps> = ({
           </Stack>
         </Col>
         <Col md={3}>
-          <Image
+          <StyledLogoImage
             src={logoUrl}
             alt="RCCG Prague Logo"
-            width={180}
-            height={180}
+            width={320}
+            height={320}
             priority
           />
         </Col>
