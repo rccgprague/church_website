@@ -44,7 +44,9 @@ const StyledLogoImage = styled(Image)`
   width: 100%;
   height: auto;
   max-width: 320px;
-  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
 
   ${mediaBreakpointDown(
     BREAKPOINTS.md,
